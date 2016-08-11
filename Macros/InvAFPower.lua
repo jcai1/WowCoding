@@ -1,0 +1,1 @@
+/run local G,g,a,t=GameTooltip,gsub,0 for b=0,4 do for l=1,99 do G:ClearLines()G:SetBagItem(b,l)for i=1,G:NumLines()do t=_G["GameTooltipTextLeft"..i]g(g(t:GetText(),"[.,]",""),"s (%d+) Ar",function(s)a=a+tonumber(s)end)end end end print(a)collectgarbage()
