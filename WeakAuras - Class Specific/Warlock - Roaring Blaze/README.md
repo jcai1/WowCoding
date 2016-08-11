@@ -1,0 +1,1 @@
+Tracks the Roaring Blaze multiplier on the current target.

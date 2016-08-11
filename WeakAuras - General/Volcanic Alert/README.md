@@ -1,0 +1,1 @@
+Plays an alert sound when you get hit by Volcanic (the Mythic+ affix).
