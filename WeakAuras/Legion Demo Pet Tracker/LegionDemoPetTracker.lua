@@ -4,14 +4,14 @@ local R = WeakAuras.regions[A.id].region
 local S = WeakAurasSaved.displays[A.id]
 
 ----- Set options here -----
-local numColumns = 5
+local numColumns = 8
 local showStacksOf1 = false
 local stackTextOptions = {
 	font = {"Fonts\\FRIZQT__.TTF", 20, "OUTLINE"},
 	pos = {"BOTTOMRIGHT", -8, 8}
 }
 local aspectRatio = 1  -- height / width
-local coalesceTime = 0.2  -- Timeframe to coalesce spawns
+local coalesceTime = 0.75  -- Timeframe to coalesce spawns
 
 ----- GUI -----
 -- R (Region) > tiles (array of Frames) > cooldown, icon, stackText
@@ -19,8 +19,8 @@ R.tiles = R.tiles or {}
 local tiles = R.tiles  -- tile index -> Frame
 local tilesActive = 0
 local tilesExpired = 0
-local tileWidth = R:GetWidth() / numColumns
-local tileHeight = tileWidth * aspectRatio
+local tileHeight = R:GetHeight()
+local tileWidth = tileHeight / aspectRatio
 local tileNamePrefix = "LegionDemoPetTracker"
 local squareTexture = "Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_White"
 
@@ -140,20 +140,20 @@ local function createTile(i)
 	end
 	local tile = tiles[i]
 	tile:SetSize(tileWidth, tileHeight)
-
+	
 	tile.index = i
 	tile.stacks = 0
 	tile.empowerStacks = 0
 	tile.empowerStartSum = 0
 	tile.empowerDurationSum = 0
-
+	
 	-- Pet icon texture
 	tile.icon = tile.icon
 	or tile:CreateTexture(tileName .. "Icon", "BACKGROUND")
 	tile.icon:ClearAllPoints()
 	tile.icon:SetAllPoints(tile)
 	tile.icon:Show()
-
+	
 	-- Cooldown frame
 	tile.cooldown = tile.cooldown
 	or CreateFrame("Cooldown", tileName .. "Cooldown", tile, "CooldownFrameTemplate")
@@ -161,7 +161,7 @@ local function createTile(i)
 	tile.cooldown:SetAllPoints(tile)
 	tile.cooldown:SetReverse(true)
 	tile.cooldown:Show()
-
+	
 	-- A frame manually set to higher frameLevel than cooldown
 	tile.highFrame = tile.highFrame
 	or CreateFrame("Frame", tileName .. "HighFrame", tile)
@@ -169,7 +169,7 @@ local function createTile(i)
 	tile.highFrame:ClearAllPoints()
 	tile.highFrame:SetAllPoints(tile)
 	tile.highFrame:Show()
-
+	
 	-- Text for # of pets in stack
 	tile.stackText = tile.stackText
 	or tile.highFrame:CreateFontString(tileName .. "StackText", "BACKGROUND")
@@ -177,7 +177,7 @@ local function createTile(i)
 	tile.stackText:ClearAllPoints()
 	tile.stackText:SetPoint("CENTER", tile, unpack(stackTextOptions.pos))
 	tile.stackText:Show()
-
+	
 	-- Demonic Empowerment bar
 	tile.empowerBG = tile.empowerBG
 	or tile:CreateTexture(tileName .. "EmpowerBG", "BACKGROUND", nil, 0)
@@ -187,7 +187,7 @@ local function createTile(i)
 	tile.empowerBG:SetTexture(squareTexture)
 	tile.empowerBG:SetVertexColor(0, 0, 0, 0.5)
 	tile.empowerBG:Hide()
-
+	
 	tile.empower = tile.empower
 	or tile:CreateTexture(tileName .. "Empower", "BACKGROUND", nil, 1)
 	tile.empower:ClearAllPoints()
@@ -196,27 +196,27 @@ local function createTile(i)
 	tile.empower:SetTexture(squareTexture)
 	tile.empower:SetVertexColor(1, 0, 1, 1)
 	tile.empower:Hide()
-
+	
 	tile.empowerAG = tile.empowerAG
 	or tile.empower:CreateAnimationGroup(tileName .. "EmpowerAG")
 	tile.empowerAG.tile = tile
-
+	
 	tile.empowerAnim = tile.empowerAnim
 	or tile.empowerAG:CreateAnimation("Scale")
 	tile.empowerAnim:SetOrigin("LEFT", 0, 0)
 	tile.empowerAnim:SetScale(0, 1)
 	tile.empowerAnim:SetDuration(12)
-
+	
 	return tile
 end
 
 local function setTilePos(tile, i)
 	local col = (i - 1) % numColumns
 	local row = floor((i - 1) / numColumns)
-
+	
 	tile:ClearAllPoints()
 	tile:SetPoint("TOPLEFT", R, "TOPLEFT",
-		col * tileWidth, -row * tileHeight * 1.2)
+	col * tileWidth, -row * tileHeight * 1.2)
 end
 
 
@@ -233,7 +233,7 @@ local function refreshEmpowerAnim(tile)
 		local endTime = startTime + duration
 		local remain = bound(endTime - t, 0, duration)
 		local fullDuration = max(duration, 12)
-
+		
 		-- Set initial width, bar will smoothly shrink to 0 over remaining duration
 		tile.empower:SetWidth(tileWidth * (remain / fullDuration))
 		-- Set height to fraction of pets empowered
@@ -313,7 +313,7 @@ local function onEmpower(subEvent, guid)
 	if not pet then return end
 	local tile = pet.tile
 	-- warnf("Empower [type=%s] [guid=%s] [tile=%d]", pet.type, guid, tile.index)
-
+	
 	local newDuration
 	if subEvent == "SPELL_AURA_APPLIED" or not pet.empowerStart then
 		newDuration = 12
@@ -337,12 +337,12 @@ local function addPet(type, guid)
 	local pet = { type = type, guid = guid, start = t }
 	for k, v in pairs(base) do pet[k] = v end
 	pets[guid] = pet
-
+	
 	-- duration 0 = permanent
 	if pet.duration ~= 0 then
 		C_Timer.After(pet.duration, function() tinsert(expires, guid) end)
 	end
-
+	
 	local i, tile
 	for j = tilesActive, 1, -1 do
 		local tile_ = tiles[j]
@@ -355,7 +355,7 @@ local function addPet(type, guid)
 			break
 		end
 	end
-
+	
 	if i then
 		-- warnf("Coalesced spawn to tile %d", i)
 		tile.stacks = tile.stacks + 1
@@ -373,7 +373,7 @@ local function addPet(type, guid)
 		tile.type = type
 	end
 	pet.tile = tile
-
+	
 	if pet.duration ~= 0 then
 		tile.cooldown:SetCooldown(t, pet.duration)
 	end
@@ -390,13 +390,13 @@ local function expireOne(guid)
 		-- warnf("Expire [type=%s] [guid=%s]", pet.type, guid)
 		pets[guid] = nil
 		petGY1[guid] = pet
-
+		
 		clearEmpower(pet)
-
+		
 		local tile = pet.tile
 		tile.stacks = tile.stacks - 1
 		tile.stackText:SetText(tile.stacks)
-
+		
 		if tile.stacks == 0 then
 			tilesExpired = tilesExpired + 1
 			assert(tile.empowerStacks == 0)
@@ -422,7 +422,7 @@ local function collapseTiles()
 	tilesActive = tilesActive - tilesExpired
 	tilesExpired = 0
 	assert(tilesActive >= 0)
-
+	
 	local j = 1
 	for i = 1, tilesActive do
 		if tiles[i].stacks == 0 then
@@ -481,7 +481,7 @@ end
 
 local function isMine(flags)
 	return (bit.band(flags, COMBATLOG_OBJECT_AFFILIATION_MINE)
-		== COMBATLOG_OBJECT_AFFILIATION_MINE)
+	== COMBATLOG_OBJECT_AFFILIATION_MINE)
 end
 
 local function detectAndAdd(guid)
@@ -497,18 +497,18 @@ end
 
 -- Runs on event COMBAT_LOG_EVENT_UNFILTERED
 local function onCombatEvent(_, subEvent, _,
-	sourceGUID, sourceName, sourceFlags, _,
+		sourceGUID, sourceName, sourceFlags, _,
 	destGUID, destName, destFlags, _, ...)
-
+	
 	if isMine(sourceFlags) then
 		detectAndAdd(sourceGUID)
 	end
-
+	
 	if isMine(destFlags)
 	or (sourceGUID == playerGUID and subEvent == "SPELL_SUMMON") then
 		detectAndAdd(destGUID)
 	end
-
+	
 	if sourceGUID == playerGUID then
 		if subEvent == "SPELL_AURA_APPLIED"
 		or subEvent == "SPELL_AURA_REFRESH" then
@@ -518,7 +518,7 @@ local function onCombatEvent(_, subEvent, _,
 			end
 		end
 	end
-
+	
 	if (subEvent == "SPELL_INSTAKILL" or subEvent == "UNIT_DIED")
 	and pets[destGUID] then
 		tinsert(expires, destGUID)
@@ -529,12 +529,12 @@ end
 local function checkPermPet()
 	local guid = UnitGUID("pet")
 	if guid == permPetGUID then return end
-
+	
 	if permPetGUID and pets[permPetGUID] then
 		-- Expire the old pet
 		tinsert(expires, permPetGUID)
 	end
-
+	
 	if guid and not pets[guid] then
 		-- Add the new pet
 		local type = detectPetType(guid)
@@ -546,7 +546,7 @@ local function checkPermPet()
 			end
 		end
 	end
-
+	
 	permPetGUID = guid
 end
 
@@ -574,3 +574,4 @@ local function doTrigger(event, ...)
 	return true
 end
 A.doTrigger = doTrigger
+
