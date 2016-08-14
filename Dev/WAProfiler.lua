@@ -1,3 +1,4 @@
+-- Anyone else reading this file - this requires a modified WeakAuras to work
 function()
     local fns = WeakAuras.custom_funcs
     if not fns then return "no" end
