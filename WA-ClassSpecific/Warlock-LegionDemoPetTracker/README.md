@@ -1,1 +1,0 @@
-Tracking of pets and Demonic Empowerment for Demonology Warlocks in Legion.

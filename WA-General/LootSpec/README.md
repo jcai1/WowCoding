@@ -1,1 +1,0 @@
-Shows your current loot specialization.

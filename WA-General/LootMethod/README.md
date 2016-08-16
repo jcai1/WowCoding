@@ -1,1 +1,0 @@
-Shows the current loot method, if in a raid.
