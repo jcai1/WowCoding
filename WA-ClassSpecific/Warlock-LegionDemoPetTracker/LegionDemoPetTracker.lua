@@ -1,7 +1,7 @@
------ Legion Demo Pet Tracker (Init) -----
+----- Legion Demo Pet Tracker -----
 local A = aura_env
 local R = WeakAuras.regions[A.id].region
-local S = WeakAurasSaved.displays[A.id]
+-- local S = WeakAurasSaved.displays[A.id]
 
 ----- Set options here -----
 local numColumns = 8
@@ -34,7 +34,7 @@ local lastGYSwap = 0
 local permPetGUID
 
 ----- Utility -----
-local t  -- Current value of GetTime()
+local now
 local playerGUID = UnitGUID("player")
 
 local function bound(x, lower, upper)
@@ -44,7 +44,6 @@ local function bound(x, lower, upper)
 	end
 end
 
--- Display error messages in the chat frame
 local warnPrefix = "\124cff33ffff" .. A.id .. ": \124r"
 local function warn(str)
 	DEFAULT_CHAT_FRAME:AddMessage(warnPrefix .. str)
@@ -231,7 +230,7 @@ local function refreshEmpowerAnim(tile)
 		local startTime = tile.empowerStartSum / tile.empowerStacks
 		local duration = tile.empowerDurationSum / tile.empowerStacks
 		local endTime = startTime + duration
-		local remain = bound(endTime - t, 0, duration)
+		local remain = bound(endTime - now, 0, duration)
 		local fullDuration = max(duration, 12)
 		
 		-- Set initial width, bar will smoothly shrink to 0 over remaining duration
@@ -277,7 +276,7 @@ end
 
 local function clearEmpowerIfEnded(pet)
 	if not pet.empowerStart then return end
-	if t >= (pet.empowerStart + pet.empowerDuration) then
+	if now >= (pet.empowerStart + pet.empowerDuration) then
 		clearEmpower(pet)
 	end
 end
@@ -286,11 +285,11 @@ local function setEmpower(pet, duration)
 	local tile = pet.tile
 	duration = max(0, duration)
 	clearEmpower(pet)
-	pet.empowerStart = t
+	pet.empowerStart = now
 	pet.empowerDuration = duration
 	tile.empowerNeedsRefresh = true
 	tile.empowerStacks = tile.empowerStacks + 1
-	tile.empowerStartSum = tile.empowerStartSum + t
+	tile.empowerStartSum = tile.empowerStartSum + now
 	tile.empowerDurationSum = tile.empowerDurationSum + duration
 	C_Timer.After(duration, function() tinsert(empowerEnds, pet.guid) end)
 end
@@ -318,7 +317,7 @@ local function onEmpower(subEvent, guid)
 	if subEvent == "SPELL_AURA_APPLIED" or not pet.empowerStart then
 		newDuration = 12
 	else
-		local remain = pet.empowerDuration - (t - pet.empowerStart)
+		local remain = pet.empowerDuration - (now - pet.empowerStart)
 		newDuration = 12 + bound(remain, 0, 3.6)
 	end
 	setEmpower(pet, newDuration)
@@ -334,7 +333,7 @@ local function addPet(type, guid)
 	local base = petDB[type]
 	if not base then return end
 	-- warnf("Add [type=%s] [guid=%s])", type, guid)
-	local pet = { type = type, guid = guid, start = t }
+	local pet = { type = type, guid = guid, start = now }
 	for k, v in pairs(base) do pet[k] = v end
 	pets[guid] = pet
 	
@@ -346,7 +345,7 @@ local function addPet(type, guid)
 	local i, tile
 	for j = tilesActive, 1, -1 do
 		local tile_ = tiles[j]
-		if t - tile_.start >= coalesceTime then
+		if now - tile_.start >= coalesceTime then
 			break
 		end
 		if tile_.type == type then
@@ -369,13 +368,13 @@ local function addPet(type, guid)
 		end
 		tile = tiles[i]
 		tile.stacks = 1
-		tile.start = t
+		tile.start = now
 		tile.type = type
 	end
 	pet.tile = tile
 	
 	if pet.duration ~= 0 then
-		tile.cooldown:SetCooldown(t, pet.duration)
+		tile.cooldown:SetCooldown(now, pet.duration)
 	end
 	tile.stackText:SetText(
 		(tile.stacks ~= 1 or showStacksOf1) and tile.stacks or nil)
@@ -449,8 +448,8 @@ end
 
 -- Run every frame
 local function handleGYSwap()
-	if t - lastGYSwap < 30 then return end
-	lastGYSwap = t
+	if now - lastGYSwap < 30 then return end
+	lastGYSwap = now
 	wipe(petGY2)
 	local tmp = petGY2
 	petGY2 = petGY1
@@ -562,16 +561,15 @@ end
 
 -- Custom text function
 local function doText()
-	t = GetTime() -- Updates "global" t
+	now = GetTime()
 	onUpdate()
 end
 A.doText = doText
 
 -- Trigger handler
 local function doTrigger(event, ...)
-	t = GetTime()
+	now = GetTime()
 	onCombatEvent(...)
 	return true
 end
 A.doTrigger = doTrigger
-

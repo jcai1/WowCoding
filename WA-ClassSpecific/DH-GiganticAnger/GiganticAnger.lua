@@ -1,7 +1,5 @@
------ Gigantic Anger (Init) -----
+----- Gigantic Anger -----
 local A = aura_env
-local R = WeakAuras.regions[A.id].region
-local S = WeakAurasSaved.displays[A.id]
 
 ----- Set options here -----
 local refreshRate = 20

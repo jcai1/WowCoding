@@ -2,7 +2,6 @@
 local A = aura_env
 -- local R = WeakAuras.regions[A.id].region
 -- local S = WeakAurasSaved.displays[A.id]
--- local playerGUID = UnitGUID("player")
 
 ----- Set options here -----
 local refreshRate = 20
@@ -13,6 +12,8 @@ local refreshInterval = 1 / refreshRate
 local lastRefresh     = -refreshInterval - 1
 local customText
 local shouldShow      = true
+local isOptionsOpen   = WeakAuras.IsOptionsOpen
+local playerGUID      = UnitGUID("player")
 
 local function onCombatEvent(_, subEvent, _, sourceGUID, sourceName, sourceFlags, _,
 	destGUID, destName, destFlags, _, spellID, spellName, _, ...)
