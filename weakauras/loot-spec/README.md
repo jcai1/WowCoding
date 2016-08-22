@@ -9,4 +9,8 @@ Displays your current loot specialization (e.g. `Demonology`). A star (e.g.
 
 ### Changes
 
-#### ...
+#### v0.0 (2016-08-23):
+
+Initial release.
+
+

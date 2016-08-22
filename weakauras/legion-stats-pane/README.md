@@ -9,4 +9,14 @@ a re-creation of the pre-Legion detailed stats pane.
 
 ### Changes
 
-#### ...
+#### v0.3 (2016-07-20):
+
+Fixed bug causing a small black square to hang around. Changed default
+positioning to `ANCHOR_OVERLAY`.
+
+
+#### v0.2:
+
+Initial release.
+
+

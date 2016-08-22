@@ -9,4 +9,8 @@ the `Roaring Blaze` talent.
 
 ### Changes
 
-#### ...
+#### v0.0 (2016-08-23):
+
+Initial release.
+
+

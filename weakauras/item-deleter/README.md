@@ -10,4 +10,8 @@ Init` custom code. Then add item names or IDs to `itemList`.
 
 ### Changes
 
-#### ...
+#### v0.0 (2016-02-16):
+
+Initial release.
+
+

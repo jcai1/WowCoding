@@ -9,4 +9,8 @@ Power` (Arcane Mage T18 4pc).
 
 ### Changes
 
-#### ...
+#### v0.1 (2016-03-04):
+
+Initial release.
+
+

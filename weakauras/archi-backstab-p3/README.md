@@ -9,4 +9,14 @@ Archi's P3.
 
 ### Changes
 
-#### ...
+#### v0.2 (2016-03-04):
+
+It works now, but phase detection is disabled, meaning it will display an
+annoying `--` during Phase 1 and 2.
+
+
+#### v0.1 (2016-02-09):
+
+Initial release.
+
+

@@ -8,4 +8,8 @@ In raids, displays the current loot method (e.g. Master Looter, Personal Loot).
 
 ### Changes
 
-#### ...
+#### v0.0 (2016-08-23):
+
+Initial release.
+
+

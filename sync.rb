@@ -61,10 +61,19 @@ weakauras.each {|wa|
     table_file  = File.join(source_dir, table_filename)
     desc_file  = File.join(source_dir, desc_filename)
 
+    versions_string = wa["versions"].map { |ver|
+      date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""
+      <<~HEREDOC
+        #### v#{ver["id"]}#{date_string}:
+
+        #{ver["info"].strip.word_wrap}
+      HEREDOC
+    }.join("\n\n")
+
     IO.write(desc_file, <<~HEREDOC)
       ## #{wa["name"]}
 
-      #{wa["description"].strip!.word_wrap}
+      #{wa["description"].strip.word_wrap}
 
       **Classes**: #{wa["classes"].join(", ")}
 
@@ -72,7 +81,8 @@ weakauras.each {|wa|
 
       ### Changes
 
-      #### ...
+      #{versions_string}
+
     HEREDOC
 
     data_type, data_file, data_mtime = nil

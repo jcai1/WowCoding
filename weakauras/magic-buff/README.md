@@ -9,4 +9,8 @@ Displays the first Magic buff on the hostile target, if any. (For `Spellsteal`,
 
 ### Changes
 
-#### ...
+#### v0.0 (2016-07-26):
+
+Initial release.
+
+

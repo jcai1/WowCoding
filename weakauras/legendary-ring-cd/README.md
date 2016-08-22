@@ -11,4 +11,15 @@ off the `Actions > On Hide` section. You can customize it/turn it off there.
 
 ### Changes
 
-#### ...
+#### v0.1 (2016-04-09):
+
+Fixed wrong time being displayed when 30-sec CD was triggered (e.g. from
+reequipping the ring). Now automatically hides itself if the ring is not
+equipped.
+
+
+#### v0.0:
+
+Initial release.
+
+
