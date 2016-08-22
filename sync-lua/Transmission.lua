@@ -1,7 +1,17 @@
-local bit = require("bit")
-local serpent = require("serpent")
-local LibCompress = require("LibCompress")
-local AceSerializer = require("AceSerializer")
+local requireRel
+if arg and arg[0] then
+    package.path = arg[0]:match("(.-)[^\\/]+$") .. "?.lua;" .. package.path
+    requireRel = require
+elseif ... then
+    local d = (...):match("(.-)[^%.]+$")
+    function requireRel(module) return require(d .. module) end
+end
+
+local bit           = require("bit")
+local LibCompress   = requireRel("LibCompress")
+local AceSerializer = requireRel("AceSerializer")
+
+local Transmission = {}
 
 -- Lua APIs
 local tinsert, tconcat, tremove = table.insert, table.concat, table.remove
@@ -47,7 +57,7 @@ local B64tobyte = {
 -- Credit goes to Galmok (galmok@gmail.com)
 local encodeB64Table = {};
 
-function encodeB64(str)
+local function encodeB64(str)
   local B64 = encodeB64Table;
   local remainder = 0;
   local remainder_length = 0;
@@ -74,7 +84,7 @@ end
 
 local decodeB64Table = {}
 
-function decodeB64(str)
+local function decodeB64(str)
   local bit8 = decodeB64Table;
   local decoded_size = 0;
   local ch;
@@ -100,7 +110,7 @@ function decodeB64(str)
   return table.concat(bit8, "", 1, decoded_size)
 end
 
-function tableAdd(augend, addend)
+local function tableAdd(augend, addend)
   local function recurse(augend, addend)
     for i,v in pairs(addend) do
       if(type(v) == "table") then
@@ -116,7 +126,7 @@ function tableAdd(augend, addend)
   recurse(augend, addend);
 end
 
-function tableSubtract(minuend, subtrahend)
+local function tableSubtract(minuend, subtrahend)
   local function recurse(minuend, subtrahend)
     for i,v in pairs(subtrahend) do
       if(minuend[i] ~= nil) then
@@ -144,7 +154,7 @@ local Compresser = LibCompress
 local Encoder = Compresser:GetAddonEncodeTable()
 local Serializer = AceSerializer
 
-function TableToString(inTable, forChat)
+function Transmission:TableToString(inTable, forChat)
   local serialized = Serializer:Serialize(inTable);
   local compressed = Compresser:CompressHuffman(serialized);
   if(forChat) then
@@ -154,7 +164,7 @@ function TableToString(inTable, forChat)
   end
 end
 
-function StringToTable(inString, fromChat)
+function Transmission:StringToTable(inString, fromChat)
   local decoded;
   if(fromChat) then
     decoded = decodeB64(inString);
@@ -172,12 +182,4 @@ function StringToTable(inString, fromChat)
   return deserialized;
 end
 
-io.input(arg[1])
-local str = io.read("*a")
-local data = StringToTable(str, true)
-
-local pretty = serpent.block(data, {comment = false})
--- print(pretty)
-local ok, result = serpent.load("return "..pretty)
-print(ok, result)
-print(serpent.block(result, {comment = false}))
+return Transmission
