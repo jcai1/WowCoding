@@ -1,13 +1,12 @@
-## _NAME_OF_WEAKAURA_
+## Magic Buff
 
-_BLAH_BLAH_BLAH_
+Displays the first Magic buff on the hostile target, if any. (For `Spellsteal`,
+`Purge`, etc.)
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Kildon
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

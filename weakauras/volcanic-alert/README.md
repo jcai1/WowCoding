@@ -1,13 +1,11 @@
-## _NAME_OF_WEAKAURA_
+## Volcanic Alert
 
-_BLAH_BLAH_BLAH_
+Plays an alert sound when you get hit by Volcanic (a Mythic+ affix).
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

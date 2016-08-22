@@ -1,13 +1,12 @@
-## _NAME_OF_WEAKAURA_
+## Loot Spec
 
-_BLAH_BLAH_BLAH_
+Displays your current loot specialization (e.g. `Demonology`). A star (e.g.
+`Demonology*`) means that your loot spec is set to `Current Spec`.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

@@ -1,13 +1,12 @@
-## _NAME_OF_WEAKAURA_
+## Roaring Blaze
 
-_BLAH_BLAH_BLAH_
+Displays the current damage multiplier of `Immolate` on your target caused by
+the `Roaring Blaze` talent.
 
-**Classes**: _WHATEVER_
+**Classes**: Warlock (Destruction)
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

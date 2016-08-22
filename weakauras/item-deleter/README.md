@@ -1,13 +1,13 @@
-## _NAME_OF_WEAKAURA_
+## Item Deleter
 
-_BLAH_BLAH_BLAH_
+Periodically sweeps your inventory and deletes specific items. Out of the box,
+it doesn't delete anything. Specify which items to delete by going to `Actions >
+Init` custom code. Then add item names or IDs to `itemList`.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

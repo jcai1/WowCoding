@@ -1,3 +1,5 @@
+-- Lua workhorse behind the WeakAura synchronization.
+
 local requireRel
 if arg and arg[0] then
     package.path = arg[0]:match("(.-)[^\\/]+$") .. "?.lua;" .. package.path

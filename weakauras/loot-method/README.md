@@ -1,13 +1,11 @@
-## _NAME_OF_WEAKAURA_
+## Loot Method
 
-_BLAH_BLAH_BLAH_
+In raids, displays the current loot method (e.g. Master Looter, Personal Loot).
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Peach
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

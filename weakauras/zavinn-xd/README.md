@@ -1,13 +1,12 @@
-## _NAME_OF_WEAKAURA_
+## Zavinn xd
 
-_BLAH_BLAH_BLAH_
+Whispers "xd" to Zavinn on BNet every 30 minutes. Change `xdInterval` in the
+`Actions > Init` custom code to alter the interval.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

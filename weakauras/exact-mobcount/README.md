@@ -1,13 +1,12 @@
-## _NAME_OF_WEAKAURA_
+## Exact Mobcount
 
-_BLAH_BLAH_BLAH_
+In Mythic+ dungeons and Challenge Modes, displays exact mobcount (e.g.
+`330/338`) along the usual mobcount percentage.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

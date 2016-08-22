@@ -1,13 +1,11 @@
-## _NAME_OF_WEAKAURA_
+## Pet Follow State
 
-_BLAH_BLAH_BLAH_
+Displays whether your pet is in the `Follow` or the `Move To` state.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

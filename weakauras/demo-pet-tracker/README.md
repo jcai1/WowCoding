@@ -1,13 +1,11 @@
-## _NAME_OF_WEAKAURA_
+## Legion Demo Pet Tracker
 
-_BLAH_BLAH_BLAH_
+Tracks your warlock pets, and `Demonic Empowerment` on them.
 
-**Classes**: _WHATEVER_
+**Classes**: Warlock (Demonology)
 
-**Requested by**: _WHOEVER_
+**Requested by**: Arc
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...

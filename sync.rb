@@ -1,7 +1,14 @@
+##
+# ===== sync.rb =====
+# Based on the information in [config.yml], this script synchronizes
+# WeakAura strings, (Lua) tables, and custom code files.
+# Also generates Markdown description files.
+#
 # Written against ruby 2.3.1 / Windows
-# Other ruby versions may work, and I tried to keep it portable,
-# but no guarantees.
-# Also, don't run this against untrusted [config.yml] files!!
+# I tried to keep it portable, but no guarantees.
+#
+# Also, don't run this against untrusted [config.yml] files!
+##
 
 require "yaml"
 require "json"
@@ -12,9 +19,10 @@ config = YAML.load_file("config.yml")
 wa_config       = config["weakauras"]
 sync_lua        = wa_config["sync-lua"]
 wa_root_dir     = wa_config["root dir"]
-verbose         = wa_config["verbose sync"]
 string_filename = wa_config["string file"]
 table_filename  = wa_config["table file"]
+desc_filename   = wa_config["description file"]
+verbose         = wa_config["verbose sync"]
 weakauras       = wa_config["auras"]
 
 =begin
@@ -32,7 +40,13 @@ File.utime to set all written files to [time]
 
 # TODO: lock file
 
-weakauras.each { |wa|
+class String
+  def word_wrap(width = 80, ch = "\n")
+    scan(/\S.{0,#{width-2}}\S(?=\s|$)|\S+/).join(ch)
+  end
+end
+
+weakauras.each {|wa|
   begin
     source_dir = File.join(wa_root_dir, wa["source dir"])
     STDERR.puts "processing #{source_dir}"
@@ -45,6 +59,21 @@ weakauras.each { |wa|
 
     string_file = File.join(source_dir, string_filename)
     table_file  = File.join(source_dir, table_filename)
+    desc_file  = File.join(source_dir, desc_filename)
+
+    IO.write(desc_file, <<~HEREDOC)
+      ## #{wa["name"]}
+
+      #{wa["description"].strip!.word_wrap}
+
+      **Classes**: #{wa["classes"].join(", ")}
+
+      **Requested by**: #{wa["requested by"].join(", ")}
+
+      ### Changes
+
+      #### ...
+    HEREDOC
 
     data_type, data_file, data_mtime = nil
 

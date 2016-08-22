@@ -1,10 +1,11 @@
 ---
 weakauras:
-  sync-lua:     sync-lua/main.lua
-  root dir:     weakauras
-  string file:  string.txt
-  table file:   table.txt
-  verbose sync: true
+  sync-lua:         sync-lua/main.lua
+  root dir:         weakauras
+  string file:      string.txt
+  table file:       table.txt
+  description file: README.md
+  verbose sync:     false
   auras:
     -
       name:         Legion Demo Pet Tracker

@@ -1,13 +1,11 @@
-## _NAME_OF_WEAKAURA_
+## L.Ring Dmg (Self)
 
-_BLAH_BLAH_BLAH_
+Shows how much your DPS ring will explode for.
 
-**Classes**: _WHATEVER_
+**Classes**: All
 
-**Requested by**: _WHOEVER_
+**Requested by**: Peach
 
 ### Changes
 
-#### v0.0 (_TODAYS_DATE_)
-
-Created.
+#### ...
