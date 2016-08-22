@@ -6,6 +6,18 @@
 -- @class file
 -- @name AceSerializer-3.0
 -- @release $Id: AceSerializer-3.0.lua 1135 2015-09-19 20:39:16Z nevcairiel $
+
+local requireRel
+if arg and arg[0] then
+    package.path = arg[0]:match("(.-)[^\\/]+$") .. "?.lua;" .. package.path
+    requireRel = require
+elseif ... then
+    local d = (...):match("(.-)[^%.]+$")
+    function requireRel(module) return require(d .. module) end
+end
+
+requireRel("orderedPairs")
+
 local MAJOR,MINOR = "AceSerializer-3.0", 5
 local AceSerializer = {}
 
@@ -76,7 +88,7 @@ local function SerializeValue(v, res, nres)
 	elseif t=="table" then	-- ^T...^t = table (list of key,value pairs)
 		nres=nres+1
 		res[nres] = "^T"
-		for k,v in pairs(v) do
+		for k,v in orderedPairs(v) do
 			nres = SerializeValue(k, res, nres)
 			nres = SerializeValue(v, res, nres)
 		end
