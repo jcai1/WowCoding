@@ -8,13 +8,8 @@
 -- @release $Id: AceSerializer-3.0.lua 1135 2015-09-19 20:39:16Z nevcairiel $
 
 local requireRel
-if arg and arg[0] then
-    package.path = arg[0]:match("(.-)[^\\/]+$") .. "?.lua;" .. package.path
-    requireRel = require
-elseif ... then
-    local d = (...):match("(.-)[^%.]+$")
-    function requireRel(module) return require(d .. module) end
-end
+if arg then package.path=arg[0]:match("(.-)[^\\/]+$").."?.lua;"..package.path;requireRel=require
+elseif...then local d=(...):match("(.-)[^%.]+$")function requireRel(m)return require(d..m)end end
 
 requireRel("orderedPairs")
 
