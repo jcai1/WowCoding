@@ -1,3 +1,8 @@
+# Written against ruby 2.3.1 / Windows
+# Other ruby versions may work, and I tried to keep it portable,
+# but no guarantees.
+# Also, don't run this against untrusted [config.yml] files!!
+
 require "yaml"
 require "json"
 require "open3"
@@ -6,6 +11,7 @@ config = YAML.load_file("config.yml")
 
 wa_config       = config["weakauras"]
 sync_lua        = wa_config["sync-lua"]
+wa_root_dir     = wa_config["root dir"]
 verbose         = wa_config["verbose sync"]
 string_filename = wa_config["string file"]
 table_filename  = wa_config["table file"]
@@ -28,11 +34,14 @@ File.utime to set all written files to [time]
 
 weakauras.each { |wa|
   begin
-    source_dir = wa["source dir"]
+    source_dir = File.join(wa_root_dir, wa["source dir"])
     STDERR.puts "processing #{source_dir}"
 
     sync_dir = File.join(source_dir, ".sync")
-    Dir.mkdir(sync_dir) unless File.directory? sync_dir
+    unless File.directory? sync_dir
+      Dir.mkdir(sync_dir)
+      `attrib +h "#{sync_dir}"` if Gem.win_platform?
+    end
 
     string_file = File.join(source_dir, string_filename)
     table_file  = File.join(source_dir, table_filename)
@@ -72,13 +81,13 @@ weakauras.each { |wa|
     cmd = %Q{lua "#{sync_lua}" inject-code-into-#{data_type} "#{data_file}" "#{code_tmp}" >"#{data_tmp}"}
     _, err, status = Open3.capture3(cmd)
     File.delete(code_tmp)
-    raise %Q{command failed: #{cmd}\nstderr:\n#{err}} unless status.success?
+    raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
 
     STDERR.puts "extracting code" if verbose
     code_hash = nil
     cmd = %Q{lua "#{sync_lua}" extract-code-from-#{data_type} "#{data_tmp}"}
     code_json, err, status = Open3.capture3(cmd)
-    raise %Q{command failed: #{cmd}\nstderr:\n#{err}} unless status.success?
+    raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
     code_hash = JSON.parse(code_json)
 
     time = Time.now
@@ -99,7 +108,7 @@ weakauras.each { |wa|
     STDERR.puts "updating #{other_file}" if verbose
     cmd = %Q{lua "#{sync_lua}" #{subcommand} "#{data_file}" >"#{other_file}"}
     _, err, status = Open3.capture3(cmd)
-    raise %Q{command failed: #{cmd}\nstderr:\n#{err}} unless status.success?
+    raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
     File.utime(time, time, other_file)
 
     STDERR.puts "finished processing #{source_dir}" if verbose
