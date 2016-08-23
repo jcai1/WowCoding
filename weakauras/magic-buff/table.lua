@@ -37,12 +37,12 @@
     regionType = "icon",
     trigger = {
       check = "update",
-      custom = "function() return aura_env.trigger() end\n\n\n\n\n\n\n\n",
+      custom = "function() return aura_env.trigger() end",
       customDuration = "function() return aura_env.duration, aura_env.expirationTime end",
-      customIcon = "function() return aura_env.texture end\n\n\n\n\n\n\n\n\n\n",
-      customName = "function() return aura_env.name end\n\n\n\n\n\n",
-      customStacks = "function() return aura_env.count end\n    \n    \n    \n    \n    \n    \n    \n    \n\n",
-      customTexture = "\n\n",
+      customIcon = "function() return aura_env.texture end",
+      customName = "function() return aura_env.name end",
+      customStacks = "function() return aura_env.count end",
+      customTexture = "",
       custom_hide = "timed",
       custom_type = "status",
       type = "custom"

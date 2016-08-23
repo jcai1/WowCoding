@@ -2,12 +2,12 @@
   d = {
     actions = {
       init = {
-        custom = "----- Loot Spec (Init) -----\nlocal A = aura_env\nlocal now\n\n----- Set options here -----\nlocal refreshRate = 5\n\n----- Custom text -----\nlocal customText = \"\"\nlocal refreshInterval = 1 / refreshRate\nlocal lastRefresh = -999\n\nlocal function makeCustomText()\n    local lootSpecID = GetLootSpecialization()\n    local _, name, icon, star\n    if lootSpecID == 0 then\n        local spec = GetSpecialization()\n        _, name, _, icon = GetSpecializationInfo(spec)\n        star = \"*\"\n    else\n        _, name, _, icon = GetSpecializationInfoByID(lootSpecID)\n        star = \"\"\n    end\n    return format(\"Loot: |T%s:0|t %s%s\", icon, name, star)\nend\n\nlocal function doCustomText()\n    now = GetTime()\n    if now - lastRefresh > refreshInterval then\n        customText = makeCustomText() or \"\"\n        lastRefresh = now\n    end\n    return customText\nend\nA.doCustomText = doCustomText\n\n",
+        custom = "----- Loot Spec (Init) -----\nlocal A = aura_env\nlocal now\n\n----- Set options here -----\nlocal refreshRate = 5\n\n----- Custom text -----\nlocal customText = \"\"\nlocal refreshInterval = 1 / refreshRate\nlocal lastRefresh = -999\n\nlocal function makeCustomText()\n    local lootSpecID = GetLootSpecialization()\n    local _, name, icon, star\n    if lootSpecID == 0 then\n        local spec = GetSpecialization()\n        _, name, _, icon = GetSpecializationInfo(spec)\n        star = \"*\"\n    else\n        _, name, _, icon = GetSpecializationInfoByID(lootSpecID)\n        star = \"\"\n    end\n    return format(\"Loot: |T%s:0|t %s%s\", icon, name, star)\nend\n\nlocal function doCustomText()\n    now = GetTime()\n    if now - lastRefresh > refreshInterval then\n        customText = makeCustomText() or \"\"\n        lastRefresh = now\n    end\n    return customText\nend\nA.doCustomText = doCustomText",
         do_custom = true
       }
     },
     activeTriggerMode = 0,
-    customText = "function() return aura_env.doCustomText() end\n    \n    \n\n",
+    customText = "function() return aura_env.doCustomText() end",
     desc = "Arc v0.0 2016-08-10",
     displayText = "%c",
     fontSize = 20,

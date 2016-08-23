@@ -19,7 +19,7 @@
       {
         trigger = {
           check = "update",
-          custom = "function()\n    local A, t = aura_env, GetTime()\n    if t - A.t2 > 1 then\n        A.t2 = t\n        A.updateRing()\n    end\n    return true\nend\n\n\n\n\n\n\n\n",
+          custom = "function()\n    local A, t = aura_env, GetTime()\n    if t - A.t2 > 1 then\n        A.t2 = t\n        A.updateRing()\n    end\n    return true\nend",
           custom_type = "status",
           event = "Conditions",
           subeventPrefix = "SPELL",
@@ -31,13 +31,13 @@
           use_unit = true
         },
         untrigger = {
-          custom = "function()\n    return true\nend\n\n\n\n"
+          custom = "function()\n    return true\nend"
         }
       }
     },
     auto = false,
     cooldown = false,
-    customText = "function()\n    local A, t = aura_env, GetTime()\n    if not A.currRing then\n        return\n    end\n    local start, dur = GetItemCooldown(A.currRing)\n    if dur == 0 then\n        return \"|cff00ff00RDY|r\"\n    else\n        local s = t - start\n        if UnitBuff(\"player\", A.currRingName) then\n            if t - A.t1 > 60 then\n                A.t1 = t\n                A.playSound()\n            end\n            local u = math.ceil(15 - s)\n            return string.format(\"|cff%s%d|r\", (u>5 and \"ffff00\" or \"ff0000\"), u)\n        else\n            local u = math.ceil(dur - s)\n            local v = (u >= 60 and string.format(\"1:%02d\", u - 60) or tostring(u))\n            return string.format(\"|cff%s%s|r\", (u>10 and \"ffffff\" or \"00ff00\"), v)\n        end\n    end\n    \nend\n\n\n\n\n",
+    customText = "function()\n    local A, t = aura_env, GetTime()\n    if not A.currRing then\n        return\n    end\n    local start, dur = GetItemCooldown(A.currRing)\n    if dur == 0 then\n        return \"|cff00ff00RDY|r\"\n    else\n        local s = t - start\n        if UnitBuff(\"player\", A.currRingName) then\n            if t - A.t1 > 60 then\n                A.t1 = t\n                A.playSound()\n            end\n            local u = math.ceil(15 - s)\n            return string.format(\"|cff%s%d|r\", (u>5 and \"ffff00\" or \"ff0000\"), u)\n        else\n            local u = math.ceil(dur - s)\n            local v = (u >= 60 and string.format(\"1:%02d\", u - 60) or tostring(u))\n            return string.format(\"|cff%s%s|r\", (u>10 and \"ffffff\" or \"00ff00\"), v)\n        end\n    end\n    \nend",
     desc = "Arc v0.1 2016-04-09",
     disjunctive = "all",
     displayIcon = "Interface\\Icons\\Spell_Nature_WispSplode",
@@ -79,9 +79,9 @@
     stacksPoint = "CENTER",
     trigger = {
       check = "update",
-      custom = "function()\n    return aura_env.currRing\nend\n\n\n\n\n\n\n\n",
-      customDuration = "\n\n",
-      customIcon = "\n\n",
+      custom = "function()\n    return aura_env.currRing\nend",
+      customDuration = "",
+      customIcon = "",
       custom_type = "status",
       event = "Conditions",
       type = "custom",
@@ -90,7 +90,7 @@
       use_unit = true
     },
     untrigger = {
-      custom = "function()\n    return true\nend\n\n\n\n\n\n\n"
+      custom = "function()\n    return true\nend"
     },
     width = 45,
     xOffset = -260.99987792968801,

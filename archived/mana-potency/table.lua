@@ -2,12 +2,12 @@
   d = {
     actions = {
       init = {
-        custom = "-- Custom text refresh\nlocal lastTextRefresh = 0\nlocal textRefreshInterval = 0.05\n\n-- Custom text string\nlocal text = \"\"\n\n\nlocal function refreshText()\n    lastTextRefresh = GetTime()\n    local mastery = GetMasteryEffect()\n    local manaFrac = UnitPower(\"player\", SPELL_POWER_MANA) / UnitPowerMax(\"player\", SPELL_POWER_MANA)\n    local damage = 100 + mastery * manaFrac\n    local maxDamage = 100 + mastery\n    local potency = damage / maxDamage\n    text = format(\"%.f\", potency * 100) .. \"%%\"\nend\n\nlocal function doText()\n    local t = GetTime()\n    if t - lastTextRefresh > textRefreshInterval then\n        refreshText()\n    end\n    return text\nend\naura_env.doText = doText\n\n",
+        custom = "-- Custom text refresh\nlocal lastTextRefresh = 0\nlocal textRefreshInterval = 0.05\n\n-- Custom text string\nlocal text = \"\"\n\n\nlocal function refreshText()\n    lastTextRefresh = GetTime()\n    local mastery = GetMasteryEffect()\n    local manaFrac = UnitPower(\"player\", SPELL_POWER_MANA) / UnitPowerMax(\"player\", SPELL_POWER_MANA)\n    local damage = 100 + mastery * manaFrac\n    local maxDamage = 100 + mastery\n    local potency = damage / maxDamage\n    text = format(\"%.f\", potency * 100) .. \"%%\"\nend\n\nlocal function doText()\n    local t = GetTime()\n    if t - lastTextRefresh > textRefreshInterval then\n        refreshText()\n    end\n    return text\nend\naura_env.doText = doText",
         do_custom = true
       }
     },
     activeTriggerMode = 0,
-    customText = "function()\n    return aura_env.doText()\nend\n\n\n\n\n\n",
+    customText = "function()\n    return aura_env.doText()\nend",
     displayText = "%c",
     fontSize = 18,
     height = 18.000003814697266,

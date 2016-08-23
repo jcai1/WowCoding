@@ -10,7 +10,7 @@
       }
     },
     activeTriggerMode = 0,
-    customText = "function()\n    return aura_env.doText()\nend\n\n\n\n\n\n\n\n\n\n",
+    customText = "function()\n    return aura_env.doText()\nend",
     desc = "Arc v0.7 2016-07-20",
     displayText = "%c",
     font = "FrancoisOne",
@@ -49,7 +49,7 @@
       type = "custom"
     },
     untrigger = {
-      custom = "function() return true end\n\n\n\n\n\n"
+      custom = "function() return true end"
     },
     width = 46.999992370605469,
     xOffset = -261,

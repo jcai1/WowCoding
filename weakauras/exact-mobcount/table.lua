@@ -2,12 +2,12 @@
   d = {
     actions = {
       init = {
-        custom = "local A = aura_env\nlocal refreshRate = 10\n\nlocal refreshInterval = 1 / refreshRate\nlocal lastRefresh = -999\nlocal customText\n\nlocal function getLabel()\n    local a = ScenarioObjectiveBlock\n    a = a and a.currentLine\n    a = a and a.Bar\n    return a and a.Label\nend\n\nlocal function makeText()\n    local _, _, numCriteria, _, _, _, _, _, weightedProgress = C_Scenario.GetStepInfo()\n    if numCriteria and numCriteria > 0 then\n        for criteriaIndex = 1, numCriteria do\n            local criteriaString, _, _, quantity, totalQuantity, _, _, quantityString = C_Scenario.GetCriteriaInfo(criteriaIndex)\n            if criteriaString == \"Enemy Forces\" then\n                return format(\"%s/%d (%d%%)\", gsub(quantityString, \"%%$\", \"\"), totalQuantity, quantity)\n            end\n        end\n    end\nend\n\nlocal function doText()\n    local now = GetTime()\n    if now - lastRefresh > refreshInterval then\n        local label = getLabel()\n        if label then\n            local text = makeText()\n            if text then\n                label:SetText(text)\n            end\n        end\n        lastRefresh = now\n    end\nend\nA.doText = doText\n\n",
+        custom = "local A = aura_env\nlocal refreshRate = 10\n\nlocal refreshInterval = 1 / refreshRate\nlocal lastRefresh = -999\nlocal customText\n\nlocal function getLabel()\n    local a = ScenarioObjectiveBlock\n    a = a and a.currentLine\n    a = a and a.Bar\n    return a and a.Label\nend\n\nlocal function makeText()\n    local _, _, numCriteria, _, _, _, _, _, weightedProgress = C_Scenario.GetStepInfo()\n    if numCriteria and numCriteria > 0 then\n        for criteriaIndex = 1, numCriteria do\n            local criteriaString, _, _, quantity, totalQuantity, _, _, quantityString = C_Scenario.GetCriteriaInfo(criteriaIndex)\n            if criteriaString == \"Enemy Forces\" then\n                return format(\"%s/%d (%d%%)\", gsub(quantityString, \"%%$\", \"\"), totalQuantity, quantity)\n            end\n        end\n    end\nend\n\nlocal function doText()\n    local now = GetTime()\n    if now - lastRefresh > refreshInterval then\n        local label = getLabel()\n        if label then\n            local text = makeText()\n            if text then\n                label:SetText(text)\n            end\n        end\n        lastRefresh = now\n    end\nend\nA.doText = doText",
         do_custom = true
       }
     },
     activeTriggerMode = 0,
-    customText = "function() return aura_env.doText() end\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    customText = "function() return aura_env.doText() end",
     desc = "Arc v0.0 2016-08-10",
     displayText = "%c",
     fontSize = 20,
