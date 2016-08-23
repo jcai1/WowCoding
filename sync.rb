@@ -134,10 +134,13 @@ weakauras.each {|wa|
 
     import_string = IO.read(string_file)
 
+    latest_header = nil
     versions_string = wa["versions"].map { |ver|
-      date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""
+      date_string   = ver.key?("date") ? %Q| (#{ver["date"]})| : ""
+      header        = %Q|v#{ver["id"]}#{date_string}|
+      latest_header = header if latest_header.nil?
       <<~HEREDOC.rstrip!
-        #### v#{ver["id"]}#{date_string}:
+        #### #{header}:
 
         #{ver["info"].rstrip.word_wrap}
       HEREDOC
@@ -152,7 +155,7 @@ weakauras.each {|wa|
 
       **Requested by**: #{wa["requested by"].join(", ")}
 
-      ### Import String
+      ### Import String for #{latest_header}
 
           #{import_string}
            
