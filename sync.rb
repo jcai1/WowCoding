@@ -132,19 +132,21 @@ weakauras.each {|wa|
     raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
     File.utime(time, time, other_file)
 
+    import_string = IO.read(string_file)
+
     versions_string = wa["versions"].map { |ver|
       date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""
-      <<~HEREDOC
+      <<~HEREDOC.rstrip!
         #### v#{ver["id"]}#{date_string}:
 
-        #{ver["info"].strip.word_wrap}
+        #{ver["info"].rstrip.word_wrap}
       HEREDOC
     }.join("\n\n")
 
     IO.write(desc_file, <<~HEREDOC)
       ## #{wa["name"]}
 
-      #{wa["description"].strip.word_wrap}
+      #{wa["description"].rstrip.word_wrap}
 
       **Classes**: #{wa["classes"].join(", ")}
 
@@ -154,6 +156,9 @@ weakauras.each {|wa|
 
       #{versions_string}
 
+      ### Import String
+
+      `#{import_string}`
     HEREDOC
 
     STDERR.puts "finished processing #{source_dir}" if verbose

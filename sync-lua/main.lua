@@ -182,7 +182,7 @@ end
 
 local function saveTable(file, data)
   local block = serpent.block(data, {comment = false})
-  file:write(block)
+  file:write(block, "\n")
 end
 
 local function saveString(file, data)
