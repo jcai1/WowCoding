@@ -233,7 +233,7 @@ wa_by_update = @weakauras.map { |wa|
     }
   end
 }.compact.sort_by { |x| x[:date] }.reverse.map { |wa|
-  "#{wa[:date]}: [#{wa[:name]} v#{wa[:version]}](#{wa[:link]})"
+  "- #{wa[:date]}: [#{wa[:name]} v#{wa[:version]}](#{wa[:link]})"
 }.join("\n")
 
 IO.write(@readme_file, <<~HEREDOC)
