@@ -573,5 +573,3 @@ local function doTrigger(event, ...)
     return true
 end
 A.doTrigger = doTrigger
-
-

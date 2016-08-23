@@ -139,4 +139,3 @@ local function doText()
     return text
 end
 A.doText = doText
-

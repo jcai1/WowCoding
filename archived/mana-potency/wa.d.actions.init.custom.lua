@@ -24,4 +24,3 @@ local function doText()
     return text
 end
 aura_env.doText = doText
-

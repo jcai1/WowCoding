@@ -38,4 +38,3 @@ local function doText()
     end
 end
 A.doText = doText
-

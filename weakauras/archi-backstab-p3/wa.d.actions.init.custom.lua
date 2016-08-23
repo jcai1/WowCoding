@@ -57,4 +57,3 @@ local function updateDisplay()
     A.display = "--"
 end
 A.updateDisplay = updateDisplay
-

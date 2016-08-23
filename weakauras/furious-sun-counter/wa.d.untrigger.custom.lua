@@ -1,6 +1,3 @@
 function()
     return true
 end
-
-
-

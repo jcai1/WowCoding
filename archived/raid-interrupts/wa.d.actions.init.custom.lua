@@ -461,5 +461,3 @@ end
 A.periodic = {} -- Array of periodic callbacks. Entry = {interval = ..., callback = ...}
 table.insert(A.periodic, {interval = 0.1, callback = updateDisplay})
 table.insert(A.periodic, {interval = 0.5, callback = updateAllUnits})
-
-

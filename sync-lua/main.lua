@@ -151,6 +151,9 @@ end
 local function extractCustomCode(wa)
   local acc = {}
   checkWA(acc, "wa", wa)
+  for k, v in pairs(acc) do
+    acc[k] = v:gsub("%s+$", "\n")
+  end
   return acc
 end
 
@@ -158,7 +161,7 @@ local function injectCustomCode(wa, code)
   for k, v in pairs(code) do
     -- e.g. wa.c[1].actions.init.custom = v
     local f = loadstring(k .. " = v")
-    setfenv(f, {wa = wa, v = v})
+    setfenv(f, {wa = wa, v = v:gsub("%s+$", "")})
     f()
   end
 end

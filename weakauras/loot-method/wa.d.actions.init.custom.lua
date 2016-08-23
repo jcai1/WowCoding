@@ -45,4 +45,3 @@ local function doCustomText()
     return customText
 end
 A.doCustomText = doCustomText
-

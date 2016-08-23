@@ -72,5 +72,3 @@ local function customText()
     end
 end
 A.customText = customText
-
-

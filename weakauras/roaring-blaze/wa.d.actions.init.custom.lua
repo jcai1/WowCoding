@@ -61,5 +61,3 @@ local function doTrigger(event, ...)
     return shouldShow
 end
 A.doTrigger = doTrigger
-
-
