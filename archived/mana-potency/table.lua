@@ -8,6 +8,7 @@
     },
     activeTriggerMode = 0,
     customText = "function()\n    return aura_env.doText()\nend",
+    desc = "Arc v0.0 2016-03-04",
     displayText = "%c",
     fontSize = 18,
     height = 18.000003814697266,

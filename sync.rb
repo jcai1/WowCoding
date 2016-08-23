@@ -17,7 +17,10 @@ require "set"
 
 @config = YAML.load_file("config.yml")
 
-@wa_config       = @config["weakauras"]
+@readme_file  = @config["readme file"]
+@readme_intro = @config["readme intro"]
+@wa_config    = @config["weakauras"]
+
 @sync_lua        = @wa_config["sync-lua"]
 @string_filename = @wa_config["string file"]
 @table_filename  = @wa_config["table file"]
@@ -53,9 +56,9 @@ class Array
   end
 end
 
-def process_wa(wa)
+def sync_wa(wa)
   source_dir = wa["source dir"]
-  STDERR.puts "inspecting #{source_dir}" if @verbose
+  warn "inspecting #{source_dir}" if @verbose
 
   sync_dir = File.join(source_dir, ".sync")
   unless File.directory?(sync_dir)
@@ -92,14 +95,14 @@ def process_wa(wa)
   if data_file.nil?
     raise "neither #{string_filename} nor #{table_file} exists"
   end
-  STDERR.puts "using #{data_file} as data file" if @verbose
+  warn "using #{data_file} as data file" if @verbose
 
   code_hash = {}
   Dir.glob(File.join(source_dir, "wa.*.lua")) { |code_file|
     mtime = File.mtime(code_file)
     key   = File.basename(code_file, ".lua")
     if mtime > data_mtime
-      STDERR.puts "code file #{code_file} is newer than data file" if @verbose
+      warn "code file #{code_file} is newer than data file" if @verbose
       something_to_do = true
       code_hash[key] = IO.read(code_file)
     end
@@ -110,23 +113,23 @@ def process_wa(wa)
   something_to_do ||= File.exist?(desc_file) && File.mtime(desc_file) < last_build[:time]
 
   if something_to_do
-    STDERR.puts "processing #{source_dir}"
+    warn "processing #{source_dir}"
   else
-    STDERR.puts "nothing to do in #{source_dir}"
+    warn "nothing to do in #{source_dir}"
     return
   end
 
   code_tmp = File.join(sync_dir, ".code.json")
   IO.write(code_tmp, JSON.pretty_generate(code_hash))
 
-  STDERR.puts "injecting code updates" if @verbose
+  warn "injecting code updates" if @verbose
   data_tmp = File.join(sync_dir, ".data")
   cmd = %Q{lua "#{@sync_lua}" inject-code-into-#{data_type} "#{data_file}" "#{code_tmp}" >"#{data_tmp}"}
   _, err, status = Open3.capture3(cmd)
   File.delete(code_tmp)
   raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
 
-  STDERR.puts "extracting code" if @verbose
+  warn "extracting code" if @verbose
   code_hash = nil
   cmd = %Q{lua "#{@sync_lua}" extract-code-from-#{data_type} "#{data_tmp}"}
   code_json, err, status = Open3.capture3(cmd)
@@ -146,19 +149,19 @@ def process_wa(wa)
 
   code_hash.each { |key, code_contents|
     code_file = File.join(source_dir, "#{key}.lua")
-    STDERR.puts "writing code file #{code_file}" if @verbose
+    warn "writing code file #{code_file}" if @verbose
     IO.write(code_file, code_contents)
     File.utime(time, time, code_file)
     last_build[:code_files].add(key)
   }
 
-  STDERR.puts "updating #{data_file}" if @verbose
+  warn "updating #{data_file}" if @verbose
   File.rename(data_tmp, data_file)
   File.utime(time, time, data_file)
 
   subcommand, other_file = (data_type == "string") ?
     ["string-to-table", table_file] : ["table-to-string", string_file]
-  STDERR.puts "updating #{other_file}" if @verbose
+  warn "updating #{other_file}" if @verbose
   cmd = %Q{lua "#{@sync_lua}" #{subcommand} "#{data_file}" >"#{other_file}"}
   _, err, status = Open3.capture3(cmd)
   raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
@@ -168,9 +171,9 @@ def process_wa(wa)
 
   latest_header = nil
   versions_string = wa["versions"].map { |ver|
-    date_string   = ver.key?("date") ? %Q| (#{ver["date"]})| : ""
-    header        = %Q|v#{ver["id"]}#{date_string}|
-    latest_header = header if latest_header.nil?
+    date_string = ver.key?("date") ? %Q| (#{ver["date"]})| : ""
+    header = %Q|v#{ver["id"]}#{date_string}|
+    latest_header ||= header
     <<~HEREDOC.rstrip!
       #### #{header}:
 
@@ -200,20 +203,47 @@ def process_wa(wa)
 
   File.open(last_build_file, "w") { |f| f.write(last_build.to_yaml) }
 
-  STDERR.puts "finished processing #{source_dir}" if @verbose
+  warn "finished processing #{source_dir}" if @verbose
 rescue StandardError => e
-  STDERR.print <<~HEREDOC
-    #{e.class} while processing #{source_dir}: #{e.message}
+  warn <<~HEREDOC
+    #{e.class} while syncing #{source_dir}: #{e.message}
     #{e.backtrace.join("\n")}
   HEREDOC
 ensure
   unless lock_file_obj.nil?
-    STDERR.puts "closing and deleting #{lock_file}" if @verbose
+    warn "closing and deleting #{lock_file}" if @verbose
     lock_file_obj.close
     File.delete(lock_file) rescue nil
   end
 end
 
-@weakauras.each(&method(:process_wa))
+@weakauras.each(&method(:sync_wa))
 
-STDERR.puts "sync complete!"
+wa_by_update = @weakauras.map { |wa|
+  latest = wa["versions"] && wa["versions"][0]
+  if latest.nil?
+    warn "warn: #{wa["name"]} has no versions"
+  elsif !latest["date"]
+    warn "warn: #{wa["name"]}'s latest version has no date"
+  else
+    { :name    => wa["name"],
+      :link    => wa["source dir"],
+      :version => latest["id"],
+      :date    => latest["date"]
+    }
+  end
+}.compact.sort_by { |x| x[:date] }.reverse.map { |wa|
+  "#{wa[:date]}: [#{wa[:name]} v#{wa[:version]}](#{wa[:link]})"
+}.join("\n")
+
+IO.write(@readme_file, <<~HEREDOC)
+  #{@readme_intro.rstrip}
+
+  ## List of WeakAuras
+
+  #{wa_by_update}
+HEREDOC
+
+warn "wrote #{@readme_file}"
+
+warn "sync complete!"

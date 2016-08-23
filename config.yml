@@ -1,4 +1,9 @@
 ---
+readme file:  README.md
+readme intro: |
+  # WowCoding
+  
+  Lua scripts for World of Warcraft.
 weakauras:
   sync-lua:         sync-lua/main.lua
   string file:      string.txt
@@ -305,6 +310,7 @@ weakauras:
       requested by: [Arc]
       versions:
         - id:   "0.0"
+          date: 2016-03-04
           info: Initial release.
     -
       name:         Target Threat Situation
