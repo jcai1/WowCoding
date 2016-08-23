@@ -3,7 +3,7 @@ weakauras:
   sync-lua:         sync-lua/main.lua
   root dir:         weakauras
   string file:      string.txt
-  table file:       table.txt
+  table file:       table.lua
   description file: README.md
   verbose sync:     false
   auras:
