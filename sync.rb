@@ -152,14 +152,14 @@ weakauras.each {|wa|
 
       **Requested by**: #{wa["requested by"].join(", ")}
 
-      ### Changes
-
-      #{versions_string}
-
       ### Import String
 
           #{import_string}
            
+
+      ### Changes
+
+      #{versions_string}
     HEREDOC
 
     STDERR.puts "finished processing #{source_dir}" if verbose
