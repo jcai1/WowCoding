@@ -158,7 +158,8 @@ weakauras.each {|wa|
 
       ### Import String
 
-      `#{import_string}`
+          #{import_string}
+           
     HEREDOC
 
     STDERR.puts "finished processing #{source_dir}" if verbose
