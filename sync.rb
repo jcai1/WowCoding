@@ -43,6 +43,9 @@ class String
   end
 end
 
+# TODO: keep file containing last build time to avoid
+# rebuilding unnecessarily
+
 weakauras.each {|wa|
   begin
     source_dir = wa["source dir"]
