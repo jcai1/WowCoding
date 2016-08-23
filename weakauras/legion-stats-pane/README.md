@@ -15,7 +15,12 @@ Fixed bug causing a small black square to hang around. Changed default
 positioning to `ANCHOR_OVERLAY`.
 
 
-#### v0.2:
+#### v0.2 (2016-05-26):
+
+Various features and bugfixes.
+
+
+#### v0.1 (2016-05-25):
 
 Initial release.
 

@@ -18,7 +18,6 @@ config = YAML.load_file("config.yml")
 
 wa_config       = config["weakauras"]
 sync_lua        = wa_config["sync-lua"]
-wa_root_dir     = wa_config["root dir"]
 string_filename = wa_config["string file"]
 table_filename  = wa_config["table file"]
 desc_filename   = wa_config["description file"]
@@ -48,7 +47,7 @@ end
 
 weakauras.each {|wa|
   begin
-    source_dir = File.join(wa_root_dir, wa["source dir"])
+    source_dir = wa["source dir"]
     STDERR.puts "processing #{source_dir}"
 
     sync_dir = File.join(source_dir, ".sync")
@@ -59,7 +58,7 @@ weakauras.each {|wa|
 
     string_file = File.join(source_dir, string_filename)
     table_file  = File.join(source_dir, table_filename)
-    desc_file  = File.join(source_dir, desc_filename)
+    desc_file   = File.join(source_dir, desc_filename)
 
     versions_string = wa["versions"].map { |ver|
       date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""

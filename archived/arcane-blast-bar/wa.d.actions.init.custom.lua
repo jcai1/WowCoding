@@ -28,12 +28,12 @@ A.w, A.h = w, h
 
 local T = A.timeScale
 function A.updateBar(bar, time)
-	if time <= 0 then
-		bar:Hide()
-	else
-		bar:SetWidth(min(1, time / T) * w)
-		bar:Show()
-	end
+    if time <= 0 then
+        bar:Hide()
+    else
+        bar:SetWidth(min(1, time / T) * w)
+        bar:Show()
+    end
 end
 
 local square = "Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_White"
@@ -49,13 +49,13 @@ local bt = F.botText
 -- local bt2 = F.botText2
 
 local function f(tex)
-	tex:SetTexture(square)
-	tex:ClearAllPoints()
-	tex:SetSize(w, h/2)
+    tex:SetTexture(square)
+    tex:ClearAllPoints()
+    tex:SetSize(w, h/2)
 end
 local function g(fs)
-	fs:SetFont(A.font, A.fontSize, A.fontFlags)
-	fs:ClearAllPoints()
+    fs:SetFont(A.font, A.fontSize, A.fontFlags)
+    fs:ClearAllPoints()
 end
 
 f(bg)

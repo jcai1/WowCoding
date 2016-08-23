@@ -1,6 +1,7 @@
 -- Trigger: COMBAT_LOG_EVENT_UNFILTERED
 function(_, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, destName, _, _, ...)
-    local A, t = aura_env, GetTime()
+    local t = GetTime()
+    local A = aura_env
     if A.aborted then
         return
     end
@@ -122,7 +123,6 @@ function(_, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, destName, _,
         end
         
         do
-            local c = RAID_CLASS_COLORS[class]
             local extraSpellName = select(5, ...)
             local s1, s2, len, limit = sourceName, extraSpellName, string.len, A.headerLengthLimit
             local iter = 0
@@ -141,9 +141,11 @@ function(_, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, destName, _,
                     break
                 end
             end
-            A.headerMsg = string.format("|cff%02x%02x%02x%s|r>%s",
-            255 * c.r, 255 * c.g, 255 * c.b, s1, s2)
-            A.headerMsgTime = t
+            local F = WeakAuras.regions[A.id].region
+            local header = F.header
+            local c = RAID_CLASS_COLORS[class]
+            header:SetText(string.format("|c%s%s|r>%s", c.colorStr, s1, s2))
+            A.scaleText(header)
         end
     end
 end

@@ -15,7 +15,7 @@ Fixed an issue that caused the WeakAura to stop working when the computer was
 restarted.
 
 
-#### v0.0:
+#### v0.0 (2016-03-27):
 
 Initial release.
 

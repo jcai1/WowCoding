@@ -15,7 +15,7 @@ Fixed an issue where the counter could spuriously increment if an RSK cast
 caused combat.
 
 
-#### v0.0:
+#### v0.0 (2016-03-25):
 
 Initial release.
 

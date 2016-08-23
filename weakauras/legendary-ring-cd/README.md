@@ -18,7 +18,7 @@ reequipping the ring). Now automatically hides itself if the ring is not
 equipped.
 
 
-#### v0.0:
+#### v0.0 (2015-12-18):
 
 Initial release.
 
