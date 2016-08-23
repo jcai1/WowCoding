@@ -7,7 +7,7 @@
       }
     },
     customText = "function()\n    local A, t = aura_env, GetTime()\n    if t - A.t > A.dt then\n        A.t = t\n        A.updateDisplay()\n    end\n    return A.display\nend",
-    desc = "Arc v0.2 yolo",
+    desc = "Arc v0.2 2016-03-04",
     displayText = "%c",
     font = "Fira Mono Medium",
     fontSize = 20,

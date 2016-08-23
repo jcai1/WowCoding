@@ -13,7 +13,7 @@
       [4] = 0
     },
     customText = "function()\n    return aura_env.doText()\nend",
-    desc = "Arc v1.1 2016-08-16",
+    desc = "Arc v1.1 2016-08-23",
     displayIcon = "Interface\\Icons\\inv_misc_questionmark",
     displayStacks = "%c",
     height = 39.999641418457003,

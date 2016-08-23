@@ -9,7 +9,7 @@
     activeTriggerMode = -10,
     additional_triggers = {},
     customText = "function() return aura_env.doCustomText() end",
-    desc = "Arc v0.0 2016-08-10",
+    desc = "Arc v0.0 2016-08-23",
     disjunctive = "all",
     displayText = "%c",
     fontSize = 16,

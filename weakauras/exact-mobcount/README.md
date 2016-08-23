@@ -14,6 +14,6 @@ In Mythic+ dungeons and Challenge Modes, displays exact mobcount (e.g.
 
 ### Changes
 
-#### v0.0 (2016-08-23):
+#### v0.0 (2016-08-10):
 
 Initial release.

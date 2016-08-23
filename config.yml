@@ -18,30 +18,6 @@ weakauras:
           date: 2016-08-23
           info: Initial release.
     -
-      name:         Exact Mobcount
-      source dir:   weakauras/exact-mobcount
-      description: >
-        In Mythic+ dungeons and Challenge Modes, displays exact mobcount
-        (e.g. `330/338`) along the usual mobcount percentage.
-      classes:      [All]
-      requested by: [Arc]
-      versions:
-        - id:   "0.0"
-          date: 2016-08-23
-          info: Initial release.
-    -
-      name:         Loot Method
-      source dir:   weakauras/loot-method
-      description: >
-        In raids, displays the current loot method (e.g. Master Looter,
-        Personal Loot).
-      classes:      [All]
-      requested by: [Peach]
-      versions:
-        - id:   "0.0"
-          date: 2016-08-23
-          info: Initial release.
-    -
       name:         Loot Spec
       source dir:   weakauras/loot-spec
       description: >
@@ -67,6 +43,30 @@ weakauras:
           date: 2016-08-23
           info: Initial release.
     -
+      name:         Exact Mobcount
+      source dir:   weakauras/exact-mobcount
+      description: >
+        In Mythic+ dungeons and Challenge Modes, displays exact mobcount
+        (e.g. `330/338`) along the usual mobcount percentage.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "0.0"
+          date: 2016-08-10
+          info: Initial release.
+    -
+      name:         Loot Method
+      source dir:   weakauras/loot-method
+      description: >
+        In raids, displays the current loot method (e.g. Master Looter,
+        Personal Loot).
+      classes:      [All]
+      requested by: [Peach]
+      versions:
+        - id:   "0.0"
+          date: 2016-08-10
+          info: Initial release.
+    -
       name:         Volcanic Alert
       source dir:   weakauras/volcanic-alert
       description: >
@@ -75,7 +75,7 @@ weakauras:
       requested by: [Arc]
       versions:
         - id:   "0.0"
-          date: 2016-08-23
+          date: 2016-08-10
           info: Initial release.
     -
       name:         Gigantic Anger
@@ -125,6 +125,26 @@ weakauras:
           date: 2016-07-26
           info: Initial release.
     -
+      name:         Legion Stats Pane
+      source dir:   weakauras/legion-stats-pane
+      description: >
+        Whenever the stock character stats pane is shown, this WeakAura
+        overlays it with a re-creation of the pre-Legion detailed stats pane.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "0.3"
+          date: 2016-07-20
+          info: >
+            Fixed bug causing a small black square to hang around. Changed
+            default positioning to `ANCHOR_OVERLAY`.
+        - id:   "0.2"
+          date: 2016-05-26
+          info: Various features and bugfixes.
+        - id:   "0.1"
+          date: 2016-05-25
+          info: Initial release.
+    -
       name:         L.Ring Dmg (Self)
       source dir:   weakauras/legendary-ring-damage
       description: >
@@ -164,26 +184,6 @@ weakauras:
           info: >
             Should have fixed the `Prismatic Crystal` double-counting issue.
         - id:   "0.1"
-          info: Initial release.
-    -
-      name:         Legion Stats Pane
-      source dir:   weakauras/legion-stats-pane
-      description: >
-        Whenever the stock character stats pane is shown, this WeakAura
-        overlays it with a re-creation of the pre-Legion detailed stats pane.
-      classes:      [All]
-      requested by: [Arc]
-      versions:
-        - id:   "0.3"
-          date: 2016-07-20
-          info: >
-            Fixed bug causing a small black square to hang around. Changed
-            default positioning to `ANCHOR_OVERLAY`.
-        - id:   "0.2"
-          date: 2016-05-26
-          info: Various features and bugfixes.
-        - id:   "0.1"
-          date: 2016-05-25
           info: Initial release.
     -
       name:         L.Ring CD (Self)
@@ -319,7 +319,7 @@ weakauras:
       requested by: [Kildon]
       versions:
         - id:   "0.0"
-          date: 2016-01-11
+          date: 2016-01-12
           info: Initial release.
     -
       name:         Arcane Blast Bar

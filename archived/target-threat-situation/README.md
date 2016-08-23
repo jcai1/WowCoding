@@ -16,6 +16,6 @@ threat. You can adjust options under `Actions > On Init` custom code.
 
 ### Changes
 
-#### v0.0 (2016-01-11):
+#### v0.0 (2016-01-12):
 
 Initial release.

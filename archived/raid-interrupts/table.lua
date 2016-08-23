@@ -26,7 +26,7 @@
       [4] = 0
     },
     customText = "-- Custom text\nfunction()\n    local t = GetTime()\n    local A = aura_env\n    local F = WeakAuras.regions[A.id].region\n    \n    if A.aborted then\n        return\n    end\n    \n    for k = 1, #(A.periodic) do\n        local val = A.periodic[k]\n        val.lastCalled = val.lastCalled or -math.huge\n        if t - val.lastCalled > val.interval then\n            val.callback()\n            val.lastCalled = t\n        end\n    end\nend",
-    desc = "Arc v0.0",
+    desc = "Arc v0.0 2015-11-18",
     disjunctive = "any",
     displayStacks = "%c",
     displayText = "%c",
