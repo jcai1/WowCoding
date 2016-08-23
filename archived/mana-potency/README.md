@@ -2,6 +2,8 @@
 
 Shows your current damage multiplier for the (pre-Legion) Arcane Mage mastery.
 
+**Dev status**: Archived
+
 **Classes**: Mage (Arcane)
 
 **Requested by**: Arc

@@ -3,6 +3,8 @@
 Displays the current damage multiplier of `Immolate` on your target caused by
 the `Roaring Blaze` talent.
 
+**Dev status**: Release
+
 **Classes**: Warlock (Destruction)
 
 **Requested by**: Arc

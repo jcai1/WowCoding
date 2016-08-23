@@ -3,6 +3,8 @@
 Whenever the stock character stats pane is shown, this WeakAura overlays it with
 a re-creation of the pre-Legion detailed stats pane.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc

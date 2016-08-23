@@ -186,6 +186,8 @@ def sync_wa(wa)
 
     #{wa["description"].rstrip.word_wrap}
 
+    **Dev status**: #{wa["dev status"]}
+
     **Classes**: #{wa["classes"].join(", ")}
 
     **Requested by**: #{wa["requested by"].join(", ")}
@@ -226,14 +228,14 @@ wa_by_update = @weakauras.map { |wa|
   elsif !latest["date"]
     warn "warn: #{wa["name"]}'s latest version has no date"
   else
-    { :name    => wa["name"],
-      :link    => wa["source dir"],
+    { :wa      => wa,
       :version => latest["id"],
       :date    => latest["date"]
     }
   end
-}.compact.sort_by { |x| x[:date] }.reverse.map { |wa|
-  "- #{wa[:date]}: [#{wa[:name]} v#{wa[:version]}](#{wa[:link]})"
+}.compact.sort_by { |x| x[:date] }.reverse.map { |x|
+  wa, version, date = x[:wa], x[:version], x[:date]
+  "[#{wa["name"]}](#{wa["source dir"]}) | #{version} | #{date} | #{wa["dev status"]}"
 }.join("\n")
 
 IO.write(@readme_file, <<~HEREDOC)
@@ -241,6 +243,8 @@ IO.write(@readme_file, <<~HEREDOC)
 
   ## List of WeakAuras
 
+  WeakAura | Ver | Last update | Dev status
+  -------- | --- | ----------- | ----------
   #{wa_by_update}
 HEREDOC
 

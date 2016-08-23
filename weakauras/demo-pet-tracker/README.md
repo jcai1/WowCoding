@@ -2,6 +2,8 @@
 
 Tracks your warlock pets, and `Demonic Empowerment` on them.
 
+**Dev status**: Release
+
 **Classes**: Warlock (Demonology)
 
 **Requested by**: Arc

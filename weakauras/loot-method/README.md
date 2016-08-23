@@ -2,6 +2,8 @@
 
 In raids, displays the current loot method (e.g. Master Looter, Personal Loot).
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Peach

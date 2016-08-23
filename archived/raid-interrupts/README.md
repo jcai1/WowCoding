@@ -4,6 +4,8 @@ Shows a raid frame-like grid with available interrupts and cooldowns, and shows
 a message when someone interrupts. NOT updated for Legion class changes; I may
 revive this if there is enough interest.
 
+**Dev status**: Archived
+
 **Classes**: All
 
 **Requested by**: Kildon, Chambers

@@ -3,6 +3,8 @@
 Displays the number of stacks and average remaining duration for `Temporal
 Power` (Arcane Mage T18 4pc).
 
+**Dev status**: Release
+
 **Classes**: Mage (Arcane)
 
 **Requested by**: Arc

@@ -4,26 +4,28 @@ Lua scripts for World of Warcraft.
 
 ## List of WeakAuras
 
-- 2016-08-23: [Legion Demo Pet Tracker v1.1](weakauras/demo-pet-tracker)
-- 2016-08-23: [Loot Spec v0.0](weakauras/loot-spec)
-- 2016-08-23: [Roaring Blaze v0.0](weakauras/roaring-blaze)
-- 2016-08-10: [Loot Method v0.0](weakauras/loot-method)
-- 2016-08-10: [Exact Mobcount v0.0](weakauras/exact-mobcount)
-- 2016-08-10: [Volcanic Alert v0.0](weakauras/volcanic-alert)
-- 2016-08-10: [Gigantic Anger v0.0](weakauras/gigantic-anger)
-- 2016-07-26: [Exsang Damage v0.1](weakauras/exsang-damage)
-- 2016-07-26: [Pet Follow State v0.0](weakauras/pet-follow-state)
-- 2016-07-26: [Magic Buff v0.0](weakauras/magic-buff)
-- 2016-07-20: [L.Ring Dmg (Self) v0.7](weakauras/legendary-ring-damage)
-- 2016-07-20: [Legion Stats Pane v0.3](weakauras/legion-stats-pane)
-- 2016-04-09: [L.Ring CD (Self) v0.1](weakauras/legendary-ring-cd)
-- 2016-04-09: [Zavinn xd v0.1](weakauras/zavinn-xd)
-- 2016-03-26: [Furious Sun Counter v0.1](weakauras/furious-sun-counter)
-- 2016-03-26: [Savior's Boon v0.1](weakauras/saviors-boon)
-- 2016-03-04: [Temporal Power v0.1](weakauras/temporal-power)
-- 2016-03-04: [Mana Potency v0.0](archived/mana-potency)
-- 2016-03-04: [Archi Backstab P3 v0.2](weakauras/archi-backstab-p3)
-- 2016-02-16: [Item Deleter v0.0](weakauras/item-deleter)
-- 2016-01-12: [Target Threat Situation v0.0](archived/target-threat-situation)
-- 2016-01-02: [Arcane Blast Bar v0.0](archived/arcane-blast-bar)
-- 2015-11-18: [Raid Interrupts v0.0](archived/raid-interrupts)
+WeakAura | Ver | Last update | Dev status
+-------- | --- | ----------- | ----------
+[Legion Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.1 | 2016-08-23 | Release
+[Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
+[Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release
+[Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release
+[Exact Mobcount](weakauras/exact-mobcount) | 0.0 | 2016-08-10 | Release
+[Volcanic Alert](weakauras/volcanic-alert) | 0.0 | 2016-08-10 | Release
+[Gigantic Anger](weakauras/gigantic-anger) | 0.0 | 2016-08-10 | Release
+[Exsang Damage](weakauras/exsang-damage) | 0.1 | 2016-07-26 | Release
+[Pet Follow State](weakauras/pet-follow-state) | 0.0 | 2016-07-26 | Release
+[Magic Buff](weakauras/magic-buff) | 0.0 | 2016-07-26 | Release
+[L.Ring Dmg (Self)](weakauras/legendary-ring-damage) | 0.7 | 2016-07-20 | Release
+[Legion Stats Pane](weakauras/legion-stats-pane) | 0.3 | 2016-07-20 | Release
+[L.Ring CD (Self)](weakauras/legendary-ring-cd) | 0.1 | 2016-04-09 | Release
+[Zavinn xd](weakauras/zavinn-xd) | 0.1 | 2016-04-09 | Release
+[Furious Sun Counter](weakauras/furious-sun-counter) | 0.1 | 2016-03-26 | Release
+[Savior's Boon](weakauras/saviors-boon) | 0.1 | 2016-03-26 | Release
+[Temporal Power](weakauras/temporal-power) | 0.1 | 2016-03-04 | Release
+[Mana Potency](archived/mana-potency) | 0.0 | 2016-03-04 | Archived
+[Archi Backstab P3](weakauras/archi-backstab-p3) | 0.2 | 2016-03-04 | Release
+[Item Deleter](weakauras/item-deleter) | 0.0 | 2016-02-16 | Release
+[Target Threat Situation](archived/target-threat-situation) | 0.0 | 2016-01-12 | Archived
+[Arcane Blast Bar](archived/arcane-blast-bar) | 0.0 | 2016-01-02 | Archived
+[Raid Interrupts](archived/raid-interrupts) | 0.0 | 2015-11-18 | Archived

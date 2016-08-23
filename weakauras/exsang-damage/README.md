@@ -3,6 +3,8 @@
 When you cast `Exsanguinate`, displays the damage being done by your hastened
 bleeds (`Rupture`, `Garrote`).
 
+**Dev status**: Release
+
 **Classes**: Rogue (Assassination)
 
 **Requested by**: Zavinn

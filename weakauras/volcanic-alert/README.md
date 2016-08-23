@@ -2,6 +2,8 @@
 
 Plays an alert sound when you get hit by Volcanic (a Mythic+ affix).
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc

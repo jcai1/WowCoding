@@ -5,6 +5,8 @@ Indicates the status of your own ring only (so it won't trigger if someone
 activates it out of range). Note: It plays a sound on activation, which it reads
 off the `Actions > On Hide` section. You can customize it/turn it off there.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc

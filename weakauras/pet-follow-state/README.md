@@ -2,6 +2,8 @@
 
 Displays whether your pet is in the `Follow` or the `Move To` state.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc

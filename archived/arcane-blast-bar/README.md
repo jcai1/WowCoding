@@ -2,6 +2,8 @@
 
 Shows timer bars for Arcane Blast (cast) and Arcane Charge debuff.
 
+**Dev status**: Archived
+
 **Classes**: Mage (Arcane)
 
 **Requested by**: Kildon

@@ -2,6 +2,8 @@
 
 Shows how much your DPS ring will explode for.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Peach

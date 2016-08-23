@@ -5,6 +5,8 @@ primary target, the top threat tank, the top threat non-tank, and yourself).
 Plays an audio alert if you're in a tank spec and a non-tank has aggro or top
 threat. You can adjust options under `Actions > On Init` custom code.
 
+**Dev status**: Archived
+
 **Classes**: All
 
 **Requested by**: Kildon

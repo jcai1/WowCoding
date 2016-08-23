@@ -3,6 +3,8 @@
 In Mythic+ dungeons and Challenge Modes, displays exact mobcount (e.g.
 `330/338`) along the usual mobcount percentage.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc

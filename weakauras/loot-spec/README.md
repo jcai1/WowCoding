@@ -3,6 +3,8 @@
 Displays your current loot specialization (e.g. `Demonology`). A star (e.g.
 `Demonology*`) means that your loot spec is set to `Current Spec`.
 
+**Dev status**: Release
+
 **Classes**: All
 
 **Requested by**: Arc
