@@ -295,9 +295,6 @@ weakauras:
         - id:   "0.1"
           date: 2016-02-09
           info: Initial release.
-    ##
-    # Archived WeakAuras
-    ##
     -
       name:         Mana Potency
       source dir:   archived/mana-potency

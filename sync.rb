@@ -37,8 +37,6 @@ write the data in table and string formats
 File.utime to set all written files to [time]
 =end
 
-# TODO: lock file
-
 class String
   def word_wrap(width = 80, ch = "\n")
     scan(/\S.{0,#{width-2}}\S(?=\s|$)|\S+/).join(ch)
@@ -56,33 +54,15 @@ weakauras.each {|wa|
       `attrib +h "#{sync_dir}"` if Gem.win_platform?
     end
 
+    lock_file = File.join(sync_dir, ".lock")
+    lock_file_obj = File.open(lock_file, "w") # closed in [ensure]
+    unless lock_file_obj.flock(File::LOCK_EX | File::LOCK_NB)
+      raise "#{lock_file} already locked"
+    end
+
     string_file = File.join(source_dir, string_filename)
     table_file  = File.join(source_dir, table_filename)
     desc_file   = File.join(source_dir, desc_filename)
-
-    versions_string = wa["versions"].map { |ver|
-      date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""
-      <<~HEREDOC
-        #### v#{ver["id"]}#{date_string}:
-
-        #{ver["info"].strip.word_wrap}
-      HEREDOC
-    }.join("\n\n")
-
-    IO.write(desc_file, <<~HEREDOC)
-      ## #{wa["name"]}
-
-      #{wa["description"].strip.word_wrap}
-
-      **Classes**: #{wa["classes"].join(", ")}
-
-      **Requested by**: #{wa["requested by"].join(", ")}
-
-      ### Changes
-
-      #{versions_string}
-
-    HEREDOC
 
     data_type, data_file, data_mtime = nil
 
@@ -149,10 +129,40 @@ weakauras.each {|wa|
     raise "command failed: #{cmd}\nstderr:\n#{err}" unless status.success?
     File.utime(time, time, other_file)
 
+    versions_string = wa["versions"].map { |ver|
+      date_string = ver.key?("date") ? %Q{ (#{ver["date"]})} : ""
+      <<~HEREDOC
+        #### v#{ver["id"]}#{date_string}:
+
+        #{ver["info"].strip.word_wrap}
+      HEREDOC
+    }.join("\n\n")
+
+    IO.write(desc_file, <<~HEREDOC)
+      ## #{wa["name"]}
+
+      #{wa["description"].strip.word_wrap}
+
+      **Classes**: #{wa["classes"].join(", ")}
+
+      **Requested by**: #{wa["requested by"].join(", ")}
+
+      ### Changes
+
+      #{versions_string}
+
+    HEREDOC
+
     STDERR.puts "finished processing #{source_dir}" if verbose
 
   rescue StandardError => e
-    puts "error: #{e.class} while processing WeakAura: #{e.message}"
+    STDERR.puts "error: #{e.class} while processing WeakAura: #{e.message}"
+  ensure
+    unless lock_file_obj.nil?
+      STDERR.puts "closing and deleting #{lock_file}" if verbose
+      lock_file_obj.close
+      File.delete(lock_file) rescue nil
+    end
   end
 }
 
