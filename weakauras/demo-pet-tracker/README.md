@@ -1,4 +1,4 @@
-## Legion Demo Pet Tracker
+## Demo Pet Tracker
 
 Tracks your warlock pets, and `Demonic Empowerment` on them.
 

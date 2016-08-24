@@ -12,7 +12,22 @@ weakauras:
   verbose sync:     false
   auras:
     -
-      name:        Legion Demo Pet Tracker
+      name:        Demonwrath Targets
+      source dir:  weakauras/demonwrath-targets
+      dev status:  Release
+      description: |-
+        Shows an icon that pulses when `Demonwrath` ticks and displays
+        how many targets it hit.
+
+        ![Screenshot](./screenshot.jpg?raw=true)
+      classes:      [Warlock (Demonology)]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2016-08-24
+          info: Initial release.
+    -
+      name:        Demo Pet Tracker
       source dir:  weakauras/demo-pet-tracker
       dev status:  Release
       description: |-

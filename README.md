@@ -6,7 +6,8 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
-[Legion Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
+[Demonwrath Targets](weakauras/demonwrath-targets) | 1.0 | 2016-08-24 | Release
+[Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
 [Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
 [Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release
 [Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release
@@ -18,8 +19,8 @@ WeakAura | Ver | Last update | Dev status
 [Magic Buff](weakauras/magic-buff) | 0.0 | 2016-07-26 | Release
 [L.Ring Dmg (Self)](weakauras/legendary-ring-damage) | 0.7 | 2016-07-20 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.3 | 2016-07-20 | Release
-[L.Ring CD (Self)](weakauras/legendary-ring-cd) | 0.1 | 2016-04-09 | Release
 [Zavinn xd](weakauras/zavinn-xd) | 0.1 | 2016-04-09 | Release
+[L.Ring CD (Self)](weakauras/legendary-ring-cd) | 0.1 | 2016-04-09 | Release
 [Furious Sun Counter](weakauras/furious-sun-counter) | 0.1 | 2016-03-26 | Release
 [Savior's Boon](weakauras/saviors-boon) | 0.1 | 2016-03-26 | Release
 [Temporal Power](weakauras/temporal-power) | 0.1 | 2016-03-04 | Release
