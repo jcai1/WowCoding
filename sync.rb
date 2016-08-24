@@ -112,7 +112,7 @@ def sync_wa(wa)
 
   something_to_do ||= File.exist?(desc_file) && File.mtime(desc_file) < last_build[:time]
 
-  if something_to_do
+  if something_to_do || wa["force sync"]
     warn "processing #{source_dir}"
   else
     warn "nothing to do in #{source_dir}"
