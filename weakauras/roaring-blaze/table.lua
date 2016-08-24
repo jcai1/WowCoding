@@ -40,10 +40,12 @@
         single = 3
       },
       talent = {
-        multi = {}
+        multi = {},
+        single = 2
       },
       use_class = true,
-      use_spec = true
+      use_spec = true,
+      use_talent = true
     },
     numTriggers = 1,
     regionType = "text",
@@ -54,9 +56,9 @@
       events = "COMBAT_LOG_EVENT_UNFILTERED",
       type = "custom"
     },
-    width = 40.999977111816406,
-    xOffset = -357.99969482421875,
-    yOffset = 413.9998779296875
+    width = 41.000007629394531,
+    xOffset = -484.99972534179687,
+    yOffset = 259.9998779296875
   },
   m = "d",
   s = "2.2.1.1",
