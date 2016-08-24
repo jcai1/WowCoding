@@ -1,4 +1,4 @@
------ Legion Demo Pet Tracker -----
+----- Demo Pet Tracker -----
 local A = aura_env
 local R = WeakAuras.regions[A.id].region
 -- local S = WeakAurasSaved.displays[A.id]
@@ -51,12 +51,6 @@ end
 local function warnf(fmt, ...)
     warn(format(fmt, ...))
 end
-
------ GUI reset -----
-for i = 1, #tiles do
-    tiles[i]:Hide()
-end
-
 
 --[[
 pet fields: type, guid, start, duration, icon, tile, empowerStart, empowerDuration
@@ -125,7 +119,7 @@ local detectDB =
 }
 
 
-local function createTile(i)
+local function initTile(i)
     -- warnf("Creating tile %d", i)
     -- Name isn't necessary, but helps with debugging
     local tileName
@@ -205,8 +199,6 @@ local function createTile(i)
     tile.empowerAnim:SetOrigin("LEFT", 0, 0)
     tile.empowerAnim:SetScale(0, 1)
     tile.empowerAnim:SetDuration(12)
-    
-    return tile
 end
 
 local function setTilePos(tile, i)
@@ -363,7 +355,7 @@ local function addPet(type, guid)
         i = tilesActive
         -- warnf("Didn't coalesce spawn; new tile %d", i)
         if not tiles[i] then
-            tiles[i] = createTile(i)
+            initTile(i)
             setTilePos(tiles[i], i)
         end
         tile = tiles[i]
@@ -456,22 +448,18 @@ local function handleGYSwap()
     petGY1 = tmp
 end
 
-local detectPetType_
-detectPetType_ = {
-    gsubFun = function(b, i)
-        detectPetType_.base = b
-        detectPetType_.id = tonumber(i)
-    end
-}
-
+local detectPetType_env = {}
+function detectPetType_gsubFun(base, npcID)
+    detectPetType_env.base  = base
+    detectPetType_env.npcID = tonumber(npcID)
+end
 local function detectPetType(guid)
-    local base, id, type
-    local env = detectPetType_
-    env.base, env.id = nil
-    gsub(guid, "(%w*)-.*-(%d*)-%w*", env.gsubFun)
-    type = detectDB[env.id]
+    local env = detectPetType_env
+    wipe(env)
+    gsub(guid, "(%w*)-.*-(%d*)-%w*", detectPetType_gsubFun)
+    local type = detectDB[env.npcID]
     if not type then return nil end
-    if base == "Creature" and petDB["Serv" .. type] then
+    if env.base == "Creature" and petDB["Serv" .. type] then
         return "Serv" .. type
     else
         return type
@@ -573,3 +561,11 @@ local function doTrigger(event, ...)
     return true
 end
 A.doTrigger = doTrigger
+
+-- GUI reset
+for i = 1, #tiles do
+    initTile(i)
+    setTilePos(tiles[i], i)
+    tiles[i]:Hide()
+end
+

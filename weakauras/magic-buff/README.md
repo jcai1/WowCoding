@@ -1,7 +1,7 @@
 ## Magic Buff
 
-Displays the first Magic buff on the hostile target, if any. (For `Spellsteal`,
-`Purge`, etc.)
+Displays the first Magic buff on the hostile target, if any.
+(For `Spellsteal`, `Purge`, etc.)
 
 **Dev status**: Release
 
@@ -19,3 +19,4 @@ Displays the first Magic buff on the hostile target, if any. (For `Spellsteal`,
 #### v0.0 (2016-07-26):
 
 Initial release.
+

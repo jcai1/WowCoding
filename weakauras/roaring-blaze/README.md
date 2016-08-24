@@ -1,7 +1,7 @@
 ## Roaring Blaze
 
-Displays the current damage multiplier of `Immolate` on your target caused by
-the `Roaring Blaze` talent.
+Displays the current damage multiplier of `Immolate` on your target
+caused by the `Roaring Blaze` talent.
 
 **Dev status**: Release
 
@@ -19,3 +19,4 @@ the `Roaring Blaze` talent.
 #### v0.0 (2016-08-23):
 
 Initial release.
+

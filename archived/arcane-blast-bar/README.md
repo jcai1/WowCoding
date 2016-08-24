@@ -18,3 +18,4 @@ Shows timer bars for Arcane Blast (cast) and Arcane Charge debuff.
 #### v0.0 (2016-01-02):
 
 Initial release.
+

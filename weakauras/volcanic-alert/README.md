@@ -18,3 +18,4 @@ Plays an alert sound when you get hit by Volcanic (a Mythic+ affix).
 #### v0.0 (2016-08-10):
 
 Initial release.
+

@@ -1,7 +1,7 @@
 ## Exact Mobcount
 
-In Mythic+ dungeons and Challenge Modes, displays exact mobcount (e.g.
-`330/338`) along the usual mobcount percentage.
+In Mythic+ dungeons and Challenge Modes, displays exact mobcount
+(e.g. `330/338`) along the usual mobcount percentage.
 
 **Dev status**: Release
 
@@ -19,3 +19,4 @@ In Mythic+ dungeons and Challenge Modes, displays exact mobcount (e.g.
 #### v0.0 (2016-08-10):
 
 Initial release.
+

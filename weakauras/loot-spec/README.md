@@ -1,7 +1,8 @@
 ## Loot Spec
 
-Displays your current loot specialization (e.g. `Demonology`). A star (e.g.
-`Demonology*`) means that your loot spec is set to `Current Spec`.
+Displays your current loot specialization (e.g. `Demonology`). A star
+(e.g. `Demonology*`) means that your loot spec is set to
+`Current Spec`.
 
 **Dev status**: Release
 
@@ -19,3 +20,4 @@ Displays your current loot specialization (e.g. `Demonology`). A star (e.g.
 #### v0.0 (2016-08-23):
 
 Initial release.
+

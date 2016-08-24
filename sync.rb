@@ -174,17 +174,17 @@ def sync_wa(wa)
     date_string = ver.key?("date") ? %Q| (#{ver["date"]})| : ""
     header = %Q|v#{ver["id"]}#{date_string}|
     latest_header ||= header
-    <<~HEREDOC.rstrip!
+    <<~HEREDOC
       #### #{header}:
 
-      #{ver["info"].rstrip.word_wrap}
+      #{ver["info"]}
     HEREDOC
   }.join("\n\n")
 
   IO.write(desc_file, <<~HEREDOC)
     ## #{wa["name"]}
 
-    #{wa["description"].rstrip.word_wrap}
+    #{wa["description"]}
 
     **Dev status**: #{wa["dev status"]}
 
@@ -239,7 +239,7 @@ wa_by_update = @weakauras.map { |wa|
 }.join("\n")
 
 IO.write(@readme_file, <<~HEREDOC)
-  #{@readme_intro.rstrip}
+  #{@readme_intro}
 
   ## List of WeakAuras
 

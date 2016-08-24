@@ -1,8 +1,9 @@
 ## Item Deleter
 
-Periodically sweeps your inventory and deletes specific items. Out of the box,
-it doesn't delete anything. Specify which items to delete by going to `Actions >
-Init` custom code. Then add item names or IDs to `itemList`.
+Periodically sweeps your inventory and deletes specific items. Out of
+the box, it doesn't delete anything. Specify which items to delete by
+going to `Actions > Init` custom code. Then add item names or IDs
+to `itemList`.
 
 **Dev status**: Release
 
@@ -20,3 +21,4 @@ Init` custom code. Then add item names or IDs to `itemList`.
 #### v0.0 (2016-02-16):
 
 Initial release.
+

@@ -1,6 +1,7 @@
 ## Mana Potency
 
-Shows your current damage multiplier for the (pre-Legion) Arcane Mage mastery.
+Shows your current damage multiplier for the (pre-Legion)
+Arcane Mage mastery.
 
 **Dev status**: Archived
 
@@ -18,3 +19,4 @@ Shows your current damage multiplier for the (pre-Legion) Arcane Mage mastery.
 #### v0.0 (2016-03-04):
 
 Initial release.
+

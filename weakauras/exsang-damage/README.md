@@ -1,7 +1,7 @@
 ## Exsang Damage
 
-When you cast `Exsanguinate`, displays the damage being done by your hastened
-bleeds (`Rupture`, `Garrote`).
+When you cast `Exsanguinate`, displays the damage being done by your
+hastened bleeds (`Rupture`, `Garrote`).
 
 **Dev status**: Release
 
@@ -19,3 +19,4 @@ bleeds (`Rupture`, `Garrote`).
 #### v0.1 (2016-07-26):
 
 Initial release.
+
