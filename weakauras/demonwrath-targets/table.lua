@@ -9,9 +9,9 @@
     activeTriggerMode = -10,
     additional_triggers = {},
     color = {
-      0.24313725490196078,
-      0.24313725490196078,
-      0.24313725490196078
+      0.243137254901961,
+      0.243137254901961,
+      0.243137254901961
     },
     customText = "function() return aura_env.doCustomText() end",
     desc = "Arc v1.0 2016-08-24",
@@ -26,6 +26,9 @@
     init_completed = 1,
     justify = "LEFT",
     load = {
+      class = {
+        single = "WARLOCK"
+      },
       difficulty = {
         multi = {}
       },
@@ -41,9 +44,14 @@
       role = {
         multi = {}
       },
+      spec = {
+        single = 2
+      },
       talent = {
         multi = {}
-      }
+      },
+      use_class = true,
+      use_spec = true
     },
     numTriggers = 1,
     outline = "OUTLINE",
@@ -59,7 +67,7 @@
     },
     width = 43,
     xOffset = -548,
-    yOffset = 288.99993896484375
+    yOffset = 288.99993896484398
   },
   m = "d",
   s = "2.2.1.1",
