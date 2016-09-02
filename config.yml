@@ -12,6 +12,20 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Absorb Total
+      source dir:  weakauras/absorb-total
+      dev status:  Release
+      description: |-
+        Shows total absorbs on you.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [Arc]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2016-09-02
+          info: Initial release.
+    -
       name:        Demonwrath Targets
       source dir:  weakauras/demonwrath-targets
       dev status:  Release
