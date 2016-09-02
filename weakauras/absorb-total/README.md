@@ -6,7 +6,7 @@ Shows total absorbs on you.
 
 **Dev status**: Release
 
-**Classes**: Arc
+**Classes**: Any
 
 **Requested by**: Arc
 

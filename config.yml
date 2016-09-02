@@ -19,7 +19,7 @@ weakauras:
         Shows total absorbs on you.
 
         ![Screenshot](./screenshot.png?raw=true)
-      classes:      [Arc]
+      classes:      [Any]
       requested by: [Arc]
       versions:
         - id:   "1.0"
