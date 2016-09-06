@@ -12,6 +12,22 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Prevent Popup Decline
+      source dir:  weakauras/prevent-popup-decline
+      dev status:  Release
+      description: |-
+        For certain confirmation popups (accept resurrection, accept summon,
+        accept party invite), prevents the Esc key from closing them, and
+        makes the `Decline` button smaller.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [Any]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2016-09-06
+          info: Initial release.
+    -
       name:        Absorb Total
       source dir:  weakauras/absorb-total
       dev status:  Release
