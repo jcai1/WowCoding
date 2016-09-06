@@ -43,3 +43,6 @@
 
 /run local r,a=random,{};for i=1,1000 do local b={}; a[i]=b; for j=1,1000 do b[j]=r() end end; local t=debugprofilestop(); for i=1,1000 do local b=a[i]; for j=1,#b do b[j]=nil end end; print(debugprofilestop()-t)
 -- 51 us | wipe 1000-entry array via for-loop time
+
+/run local z={3,1,4,1,5,9,2,6,5,3}; local t=debugprofilestop(); for i=1,1000000 do local a,b,c,d,e,f,g,h,i,j=unpack(z) end; print(debugprofilestop()-t)
+-- 0.215 us | unpack a 10-element array 

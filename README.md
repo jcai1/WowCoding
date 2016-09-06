@@ -6,7 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
-[Prevent Popup Decline](weakauras/prevent-popup-decline) | 1.0 | 2016-09-06 | Release
+[Prevent Popup Decline](weakauras/prevent-popup-decline) | 1.1 | 2016-09-06 | Release
 [Absorb Total](weakauras/absorb-total) | 1.0 | 2016-09-02 | Release
 [Demonwrath Targets](weakauras/demonwrath-targets) | 1.0 | 2016-08-24 | Release
 [Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release

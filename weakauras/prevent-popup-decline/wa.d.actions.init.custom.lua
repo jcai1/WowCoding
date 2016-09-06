@@ -45,5 +45,3 @@ function aura_env.init()
     
     hooksecurefunc("StaticPopup_Show", hook_StaticPopup_Show)
 end
-
-print(format("WeakAura %s loaded", aura_env.id))

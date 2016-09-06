@@ -24,6 +24,9 @@ weakauras:
       classes:      [Any]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2016-09-06
+          info: Remove loading message that was left in by accident.
         - id:   "1.0"
           date: 2016-09-06
           info: Initial release.
