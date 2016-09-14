@@ -12,6 +12,21 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Fireball Crit Chance
+      source dir:  weakauras/fireball-crit-chance
+      dev status:  Release
+      description: |-
+        Shows the crit chance of your Fireball, as modified by
+        `Enhanced Pyrotechnics`.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [Mage (Fire)]
+      requested by: [Kildon]
+      versions:
+        - id:   "1.0"
+          date: 2016-09-14
+          info: Initial release.
+    -
       name:        Prevent Popup Decline
       source dir:  weakauras/prevent-popup-decline
       dev status:  Release
