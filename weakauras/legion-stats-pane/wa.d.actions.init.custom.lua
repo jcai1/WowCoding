@@ -15,29 +15,17 @@ local S = WeakAurasSaved.displays[A.id]
 local ANCHOR_FIXED, ANCHOR_RIGHT, ANCHOR_OVERLAY = 0, 1, 2
 
 ---- Set options here ----
-local bgColor = {0, 0, 0, 1}        -- Background color/opacity (RGBA)
-local headerColor = "33b5ff"        -- Color for category headings
-local statNameColor = "f5bc00"        -- Color for stat names
-local refreshRate = 10                -- How many times per second to refresh stats
+local bgColor = {0, 0, 0, 1}    -- Background color/opacity (RGBA)
+local headerColor = "33b5ff"      -- Color for category headings
+local statNameColor = "f5bc00"    -- Color for stat names
+local refreshRate = 10            -- How many times per second to refresh stats
 local anchorBehavior = ANCHOR_OVERLAY  -- See above
 
--- Set up the background
-R.bg = R.bg or R:CreateTexture("LegionStatsPaneBg", "BACKGROUND")
-R.bg:SetTexture("Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_White")
-R.bg:ClearAllPoints()
-R.bg:SetVertexColor(unpack(bgColor))
-R.bg:SetAllPoints(R)
+----- Utility -----
+local function printf(...) print(format(...)) end
+local function errorf(...) error(format(...)) end
 
----- Custom text ----
-local lastTextRefresh = 0                    -- Time of last refresh
-local textRefreshInterval = 1/refreshRate    -- Interval between refreshes
-local text = ""                                -- Actual text to display
-
----- Constants ----
-local BreakUpLargeNumbers, GetCombatRating, GetCombatRatingBonus
-    = BreakUpLargeNumbers, GetCombatRating, GetCombatRatingBonus
-
----- Utility functions ----
+----- Stats string construction, utility -----
 
 -- Gets ranged damage or melee damage based on weapon
 local function GetAppropriateDamage(unit)
@@ -103,7 +91,7 @@ function formatRatingStat(value, rating)
         GetCombatRatingBonus(rating))
 end
 
-
+----- Stats string construction, core -----
 
 -- Array to contain the lines of text.
 local lines = {}
@@ -573,8 +561,6 @@ local function addBlock(lines, unit)
     addStat(lines, "Block", text)
 end
 
-
-
 -- Main function that calls the individual stat getters.
 -- Obtain all the stats and build a formatted string.
 local function makeStatsString(unit)
@@ -638,6 +624,46 @@ local function makeStatsString(unit)
     return table.concat(lines, "\n")
 end
 
+----- Display and main loop -----
+
+-- Background
+R.bg = R.bg or R:CreateTexture("LegionStatsPaneBg", "BACKGROUND")
+R.bg:SetTexture("Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_White")
+R.bg:ClearAllPoints()
+R.bg:SetVertexColor(unpack(bgColor))
+R.bg:SetPoint("BOTTOMLEFT", R, "BOTTOMLEFT", -2, -3)
+R.bg:SetPoint("TOPRIGHT", R, "TOPRIGHT", -1, 0)
+R.bg:Show()
+
+-- Custom text
+local lastRefresh = 0
+local refreshInterval = 1/refreshRate
+local customText = ""
+
+-- Return a new custom text string
+local function makeCustomText()
+    -- Normally I'd make the pet stats appear when you're viewing
+    -- the pet stats pane, but they removed it for Legion.
+    -- So pet stats will also appear when you're targeting your pet.
+    if UnitIsUnit("target", "pet") then
+        return makeStatsString("pet")
+    else
+        return makeStatsString("player")
+    end
+end
+
+local function refreshText()
+    lastRefresh = GetTime()
+    customText = makeCustomText()
+end
+
+-- Positioning and visibility
+
+-- Hack to prevent WeakAuras itself from moving the frame
+R.allowMove = (anchorBehavior == ANCHOR_FIXED)
+
+R.shouldShow = CharacterStatsPane and CharacterStatsPane:IsVisible()
+
 -- Anchor the WeakAura according to anchorBehavior
 local function doAnchor()
     if anchorBehavior == ANCHOR_FIXED then
@@ -646,58 +672,97 @@ local function doAnchor()
     elseif anchorBehavior == ANCHOR_RIGHT then
         -- Anchors the text display to the right of the character frame,
         -- and flush with the top.
-        if not CharacterFrame then
-            return
-        end
+        if not CharacterFrame then return end
+        R.allowMove = true
         R:ClearAllPoints()
         R:SetPoint("TOPLEFT", CharacterFrame, "TOPRIGHT", 0, 0)
+        R.allowMove = false
     elseif anchorBehavior == ANCHOR_OVERLAY then
-        -- Anchors the text display directly above the Blizzard stats pane
+        -- Anchors the text display in front of the Blizzard stats pane
         -- by anchoring the top left corners.
-        if not CharacterStatsPane then
-            return
-        end
+        if not CharacterFrameInsetRight then return end
+        R.allowMove = true
+        R:SetParent(CharacterFrameInsetRight)
         R:ClearAllPoints()
         R:SetPoint("TOPLEFT", CharacterStatsPane, "TOPLEFT", 0, 0)
-    end
-    -- Set WA display properties to match the new position,
-    -- to prevent WeakAuras from jerking it back.
-    S.selfPoint = "TOPLEFT"
-    S.anchorPoint = "BOTTOMLEFT"
-    S.xOffset = R:GetLeft()
-    S.yOffset = R:GetTop()
-end
-
--- Return a new custom text string
-local function makeText()
-    -- Normally I'd make the pet stats appear when you're viewing
-    -- the pet stats pane, but they removed it for Legion.
-    -- So pet stats will also appear when you're targeting your pet.
-    if UnitIsUnit("target", "pet")
-    or (PetPaperDollFrame and PetPaperDollFrame:IsVisible()) then
-        return makeStatsString("pet")
-    else
-        return makeStatsString("player")
+        R.allowMove = false
     end
 end
 
--- Custom text function
-local function doText()
-    local t = GetTime()
-    -- Do the inexpensive show/hide check every frame,
-    -- to avoid jerkiness when the char frame is closed.
-    if CharacterStatsPane and CharacterStatsPane:IsVisible() then
-        -- The actual stats refresh will obey the refresh interval.
-        if t - lastTextRefresh > textRefreshInterval then
-            lastTextRefresh = t
-            text = makeText()
-            doAnchor()
+function A.onUpdateTrigger()
+    if R.shouldShow then
+        if GetTime() - lastRefresh > refreshInterval then
+            refreshText()
         end
-        R.bg:Show()
-    else
-        text = ""
-        R.bg:Hide()
     end
-    return text
+    return R.shouldShow
 end
-A.doText = doText
+
+function A.doCustomText()
+    return customText
+end
+
+-- Set up hooks
+
+R.hooks = {}
+
+function R.hooks.CharacterStatsPane_OnShow()
+    R.shouldShow = true
+end
+
+function R.hooks.CharacterStatsPane_OnHide()
+    R.shouldShow = false
+end
+
+function R.hooks.R_OnShow()
+    if anchorBehavior == ANCHOR_OVERLAY then
+        CharacterStatsPane:SetAlpha(0)
+    end
+    refreshText()
+    doAnchor()
+end
+
+function R.hooks.R_OnHide()
+    if anchorBehavior == ANCHOR_OVERLAY then
+        CharacterStatsPane:SetAlpha(1)
+    end
+end
+
+function R.hooks.R_ClearAllPoints(...)
+    if R.allowMove then
+        R.originals.R_ClearAllPoints(...)
+    end
+end
+
+function R.hooks.R_SetPoint(...)
+    if R.allowMove then
+        R.originals.R_SetPoint(...)
+    end
+end
+
+local function hookStub(name)
+    return function(...)
+        local f = R.hooks[name]
+        if type(f) ~= "function" then
+            errorf('%s: R.hooks["%s"] is %s', A.id, tostring(name), tostring(f))
+        end
+        f(...)
+    end
+end
+
+if not R.hooked then
+    R.originals = {
+        R_ClearAllPoints = R.ClearAllPoints,
+        R_SetPoint = R.SetPoint,
+    }
+    CharacterStatsPane:HookScript("OnShow", hookStub("CharacterStatsPane_OnShow"))
+    CharacterStatsPane:HookScript("OnHide", hookStub("CharacterStatsPane_OnHide"))
+    R:HookScript("OnShow", hookStub("R_OnShow"))
+    R:HookScript("OnHide", hookStub("R_OnHide"))
+    R.ClearAllPoints = hookStub("R_ClearAllPoints")
+    R.SetPoint = hookStub("R_SetPoint")
+    R.hooked = true
+    
+    R.hooks.R_OnShow()
+end
+

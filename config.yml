@@ -204,6 +204,10 @@ weakauras:
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "0.4"
+          date: 2016-09-14
+          info: |-
+            Lowered the WeakAura's frame strata to MEDIUM. Some refactoring.
         - id:   "0.3"
           date: 2016-07-20
           info: |-

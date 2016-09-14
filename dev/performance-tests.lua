@@ -11,8 +11,8 @@
 /run local band = bit.band; local t=debugprofilestop(); local x = 1753924; for i=1,200000 do band(x, 1);band(x, 1);band(x, 1);band(x, 1);band(x, 1) end; print(debugprofilestop()-t)
 -- 0.110 us | bit.band time
 
-/run local function band(x,y) return x+2 end; local t=debugprofilestop(); local x = 1753924; for i=1,200000 do band(x, 1);band(x, 1);band(x, 1);band(x, 1);band(x, 1) end; print(debugprofilestop()-t)
--- 0.150 us | function call time
+/run local function f() end; local t=debugprofilestop(); for i=1,200000 do f() f() f() f() f() end; print(debugprofilestop()-t)
+-- 0.050 us | function call time
 
 /run local t=debugprofilestop(); local x = 1753924; for i=1,200000 do local y=x%2;y=x%2;y=x%2;y=x%2;y=x%2 end; print(debugprofilestop()-t)
 -- 0.029 us | div/modulo time
@@ -46,3 +46,9 @@
 
 /run local z={3,1,4,1,5,9,2,6,5,3}; local t=debugprofilestop(); for i=1,1000000 do local a,b,c,d,e,f,g,h,i,j=unpack(z) end; print(debugprofilestop()-t)
 -- 0.215 us | unpack a 10-element array 
+
+/run local a,b,c,d="JhhBVJPxjoZY9p9h3ovl","ykoFHuxSQR5JudpW2trk" c=a..b d=a..b local t=debugprofilestop() for i=1,1000000 do local _=(c==d) end; print(debugprofilestop()-t)
+-- 0.020 us | compare two equal 40-chararacter strings
+
+/run local t=debugprofilestop() for i=1,1000000 do GetTime() end; print(debugprofilestop()-t)
+-- 0.051 us | call GetTime()
