@@ -12,6 +12,22 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Artifact Power Total
+      source dir:  weakauras/artifact-power-total
+      dev status:  Release
+      description: |-
+        Shows the total amount of artifact power in your bag/bank.
+
+        You can trigger it by whispering yourself "afpower", or by
+        using this macro:
+        `/run WeakAuras.regions["Artifact Power Total"].region.doCalc()`
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2016-09-20
+          info: Initial release.
+    -
       name:        Fireball Crit Chance
       source dir:  weakauras/fireball-crit-chance
       dev status:  Release

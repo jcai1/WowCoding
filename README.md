@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Artifact Power Total](weakauras/artifact-power-total) | 1.0 | 2016-09-20 | Release
 [Fireball Crit Chance](weakauras/fireball-crit-chance) | 1.0 | 2016-09-14 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.4 | 2016-09-14 | Release
 [Prevent Popup Decline](weakauras/prevent-popup-decline) | 1.1 | 2016-09-06 | Release
@@ -19,8 +20,8 @@ WeakAura | Ver | Last update | Dev status
 [Gigantic Anger](weakauras/gigantic-anger) | 0.0 | 2016-08-10 | Release
 [Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release
 [Magic Buff](weakauras/magic-buff) | 0.0 | 2016-07-26 | Release
-[Exsang Damage](weakauras/exsang-damage) | 0.1 | 2016-07-26 | Release
 [Pet Follow State](weakauras/pet-follow-state) | 0.0 | 2016-07-26 | Release
+[Exsang Damage](weakauras/exsang-damage) | 0.1 | 2016-07-26 | Release
 [L.Ring Dmg (Self)](weakauras/legendary-ring-damage) | 0.7 | 2016-07-20 | Release
 [L.Ring CD (Self)](weakauras/legendary-ring-cd) | 0.1 | 2016-04-09 | Release
 [Zavinn xd](weakauras/zavinn-xd) | 0.1 | 2016-04-09 | Release
