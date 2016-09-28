@@ -12,6 +12,21 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Mark of the Nightmare
+      source dir:  weakauras/mark-of-the-nightmare
+      dev status:  Beta
+      description: |-
+        Encounter - Emerald Nightmare - Dragons of Nightmare
+
+        Displays timers for Mark of the Nightmare applications, and indicates
+        whether you are in range to get hit.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0-beta"
+          date: 2016-09-28
+          info: Initial beta release.
+    -
       name:        Artifact Power Total
       source dir:  weakauras/artifact-power-total
       dev status:  Release
