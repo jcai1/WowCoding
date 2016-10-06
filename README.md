@@ -6,7 +6,8 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
-[Mark of the Nightmare](weakauras/mark-of-the-nightmare) | 1.0-beta | 2016-09-28 | Beta
+[EN/06CEN/Nightmare Brambles](weakauras/nightmare-brambles) | 1.0-beta | 2016-10-06 | Beta
+[EN/05DRA/Mark of the Nightmare](weakauras/mark-of-the-nightmare) | 1.0-beta | 2016-09-28 | Beta
 [Artifact Power Total](weakauras/artifact-power-total) | 1.0 | 2016-09-20 | Release
 [Fireball Crit Chance](weakauras/fireball-crit-chance) | 1.0 | 2016-09-14 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.4 | 2016-09-14 | Release
@@ -17,8 +18,8 @@ WeakAura | Ver | Last update | Dev status
 [Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release
 [Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
 [Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release
-[Volcanic Alert](weakauras/volcanic-alert) | 0.0 | 2016-08-10 | Release
 [Exact Mobcount](weakauras/exact-mobcount) | 0.0 | 2016-08-10 | Release
+[Volcanic Alert](weakauras/volcanic-alert) | 0.0 | 2016-08-10 | Release
 [Gigantic Anger](weakauras/gigantic-anger) | 0.0 | 2016-08-10 | Release
 [Pet Follow State](weakauras/pet-follow-state) | 0.0 | 2016-07-26 | Release
 [Exsang Damage](weakauras/exsang-damage) | 0.1 | 2016-07-26 | Release
