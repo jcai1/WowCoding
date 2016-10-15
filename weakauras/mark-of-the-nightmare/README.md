@@ -1,8 +1,8 @@
-## Mark of the Nightmare
+## EN/05DRA/Mark of the Nightmare
 
-Encounter - Emerald Nightmare - Dragons of Nightmare
+Emerald Nightmare: Dragons of Nightmare
 
-Displays timers for Mark of the Nightmare applications, and indicates
+Displays timers for `Mark of the Nightmare` applications, and indicates
 whether you are in range to get hit.
 
 **Dev status**: Beta

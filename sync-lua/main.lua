@@ -152,7 +152,7 @@ local function extractCustomCode(wa)
   local acc = {}
   checkWA(acc, "wa", wa)
   for k, v in pairs(acc) do
-    acc[k] = v:gsub("%s*$", "\n")
+    acc[k] = v:gsub("%s+$", "") .. "\n"
   end
   return acc
 end

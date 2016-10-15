@@ -765,4 +765,3 @@ if not R.hooked then
     
     R.hooks.R_OnShow()
 end
-

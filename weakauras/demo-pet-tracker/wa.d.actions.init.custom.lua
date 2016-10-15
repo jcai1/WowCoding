@@ -568,4 +568,3 @@ for i = 1, #tiles do
     setTilePos(tiles[i], i)
     tiles[i]:Hide()
 end
-
