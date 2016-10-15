@@ -233,7 +233,7 @@ wa_by_update = @weakauras.map { |wa|
       :date    => latest["date"]
     }
   end
-}.compact.sort_by { |x| x[:date] }.reverse.map { |x|
+}.compact.sort_by { |x| [-x[:date].to_time.to_f, x[:wa]["name"]] }.map { |x|
   wa, version, date = x[:wa], x[:version], x[:date]
   "[#{wa["name"]}](#{wa["source dir"]}) | #{version} | #{date} | #{wa["dev status"]}"
 }.join("\n")
