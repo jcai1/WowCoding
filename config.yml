@@ -12,6 +12,20 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Touch of Karma
+      source dir:  weakauras/touch-of-karma
+      dev status:  Release
+      description: |-
+        Shows the absorb amount remaining for `Touch of Karma`.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [Monk (WW)]
+      requested by: [Zavinn]
+      versions:
+        - id:   "1.0"
+          date: 2016-10-15
+          info: Initial release.
+    -
       name:        EN/06CEN/Nightmare Brambles
       source dir:  weakauras/nightmare-brambles
       dev status:  Beta
