@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Sephuz's Secret](weakauras/sephuzs-secret) | 1.0 | 2016-10-15 | Release
 [Touch of Karma](weakauras/touch-of-karma) | 1.0 | 2016-10-15 | Release
 [EN/06CEN/Nightmare Brambles](weakauras/nightmare-brambles) | 1.0-beta | 2016-10-06 | Beta
 [EN/05DRA/Mark of the Nightmare](weakauras/mark-of-the-nightmare) | 1.0-beta | 2016-09-28 | Beta

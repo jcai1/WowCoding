@@ -12,6 +12,20 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Sephuz's Secret
+      source dir:  weakauras/sephuzs-secret
+      dev status:  Release
+      description: |-
+        Shows the buff duration / ICD for the legendary `Sephuz's Secret`.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [All]
+      requested by: [Axatar, Oreo]
+      versions:
+        - id:   "1.0"
+          date: 2016-10-15
+          info: Initial release.
+    -
       name:        Touch of Karma
       source dir:  weakauras/touch-of-karma
       dev status:  Release
