@@ -16,7 +16,8 @@ weakauras:
       source dir:  weakauras/touch-of-karma
       dev status:  Release
       description: |-
-        Shows the absorb amount remaining for `Touch of Karma`.
+        Shows the absorb amount remaining for `Touch of Karma`, taking
+        account for the legendary `Cenedril, Reflector of Hatred`.
 
         ![Screenshot](./screenshot.png?raw=true)
       classes:      [Monk (WW)]
@@ -178,11 +179,14 @@ weakauras:
           info: Initial release.
     -
       name:        Exact Mobcount
-      source dir:  weakauras/exact-mobcount
-      dev status:  Release
+      source dir:  archived/exact-mobcount
+      dev status:  Archived
       description: |-
         In Mythic+ dungeons and Challenge Modes, displays exact mobcount
         along with the usual mobcount percentage.
+
+        NOTE: I recommend to use the addon `Angry Keystones` instead of this
+        WeakAura.
 
         ![Screenshot](./screenshot.jpg?raw=true)
       classes:      [All]

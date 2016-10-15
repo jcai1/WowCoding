@@ -1,6 +1,7 @@
 ## Touch of Karma
 
-Shows the absorb amount remaining for `Touch of Karma`.
+Shows the absorb amount remaining for `Touch of Karma`, taking
+account for the legendary `Cenedril, Reflector of Hatred`.
 
 ![Screenshot](./screenshot.png?raw=true)
 

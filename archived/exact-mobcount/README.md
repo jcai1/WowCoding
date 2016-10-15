@@ -3,9 +3,12 @@
 In Mythic+ dungeons and Challenge Modes, displays exact mobcount
 along with the usual mobcount percentage.
 
+NOTE: I recommend to use the addon `Angry Keystones` instead of this
+WeakAura.
+
 ![Screenshot](./screenshot.jpg?raw=true)
 
-**Dev status**: Release
+**Dev status**: Archived
 
 **Classes**: All
 

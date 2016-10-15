@@ -18,7 +18,7 @@ WeakAura | Ver | Last update | Dev status
 [Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
 [Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
 [Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release
-[Exact Mobcount](weakauras/exact-mobcount) | 0.0 | 2016-08-10 | Release
+[Exact Mobcount](archived/exact-mobcount) | 0.0 | 2016-08-10 | Archived
 [Gigantic Anger](weakauras/gigantic-anger) | 0.0 | 2016-08-10 | Release
 [Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release
 [Volcanic Alert](weakauras/volcanic-alert) | 0.0 | 2016-08-10 | Release
