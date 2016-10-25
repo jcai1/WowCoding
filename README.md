@@ -31,7 +31,7 @@ WeakAura | Ver | Last update | Dev status
 [Zavinn xd](weakauras/zavinn-xd) | 0.1 | 2016-04-09 | Release
 [Furious Sun Counter](weakauras/furious-sun-counter) | 0.1 | 2016-03-26 | Release
 [Savior's Boon](weakauras/saviors-boon) | 0.1 | 2016-03-26 | Release
-[Archi Backstab P3](weakauras/archi-backstab-p3) | 0.2 | 2016-03-04 | Release
+[Archi Backstab P3](archived/archi-backstab-p3) | 0.2 | 2016-03-04 | Archived
 [Mana Potency](archived/mana-potency) | 0.0 | 2016-03-04 | Archived
 [Temporal Power](weakauras/temporal-power) | 0.1 | 2016-03-04 | Release
 [Item Deleter](weakauras/item-deleter) | 0.0 | 2016-02-16 | Release

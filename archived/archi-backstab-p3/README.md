@@ -3,7 +3,9 @@
 Displays the angle of your position with respect to the boss's facing,
 in mythic Archi's P3.
 
-**Dev status**: Release
+No longer works after 7.1 due to `UnitPosition` restrictions.
+
+**Dev status**: Archived
 
 **Classes**: Rogue (Subtlety)
 
