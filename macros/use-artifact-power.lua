@@ -1,0 +1,1 @@
+/run local m,d=GetRunningMacro()for i=0,4 do for j=1,40 do d=GetContainerItemID(i,j)if(GetContainerItemLink(i,j)or""):find(":8388608:")and d~=141699 then EditMacro(m,nil,nil,GetMacroBody(m):sub(1,237).."\n/use item:"..d)break end end end
