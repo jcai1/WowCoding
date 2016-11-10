@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Demonwrath Targets](weakauras/demonwrath-targets) | 1.1 | 2016-11-10 | Release
 [Sephuz's Secret](weakauras/sephuzs-secret) | 1.0 | 2016-10-15 | Release
 [Touch of Karma](weakauras/touch-of-karma) | 1.0 | 2016-10-15 | Release
 [EN/06CEN/Nightmare Brambles](weakauras/nightmare-brambles) | 1.0-beta | 2016-10-06 | Beta
@@ -15,7 +16,6 @@ WeakAura | Ver | Last update | Dev status
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.4 | 2016-09-14 | Release
 [Prevent Popup Decline](weakauras/prevent-popup-decline) | 1.1 | 2016-09-06 | Release
 [Absorb Total](weakauras/absorb-total) | 1.0 | 2016-09-02 | Release
-[Demonwrath Targets](weakauras/demonwrath-targets) | 1.0 | 2016-08-24 | Release
 [Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
 [Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
 [Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release

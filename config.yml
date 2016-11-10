@@ -142,10 +142,13 @@ weakauras:
         Shows an icon that pulses when `Demonwrath` ticks and displays
         how many targets it hit.
 
-        ![Screenshot](./screenshot.jpg?raw=true)
+        ![Screenshot](./screenshot.png?raw=true)
       classes:      [Warlock (Demonology)]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2016-11-10
+          info: Icon is now hidden when not active. Default size is smaller.
         - id:   "1.0"
           date: 2016-08-24
           info: Initial release.

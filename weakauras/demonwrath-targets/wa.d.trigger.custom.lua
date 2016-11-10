@@ -1,1 +1,1 @@
-function(...) return aura_env.doTrigger(...) end
+function(event, ...) aura_env.onCombatEvent(...) end

@@ -1,66 +1,42 @@
 ----- Demonwrath Targets -----
 local A = aura_env
 local R = WeakAuras.regions[A.id].region
--- local S = WeakAurasSaved.displays[A.id]
 local playerGUID = UnitGUID("player")
+local customText = ""
 
------ Set options here -----
-local refreshThrottle = 100
-
------ Utility -----
-local now
-local refreshInterval = 1 / refreshThrottle
-local lastRefresh     = -refreshInterval - 1
-local customText
-local shouldShow      = true
-local isOptionsOpen   = WeakAuras.IsOptionsOpen
-local playerGUID      = UnitGUID("player")
-
------ GUI -----
-local widgetName    = "DemonwrathTargets"
-local squareTexture = "Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_White"
-
------ Main logic -----
 local state = "ready"  -- ready, collect
 local counter = 0
 local lastTransition = -999
 
-local function initGUI()
-    local bgName = widgetName.."BG"
-    
-    R.bg = R.bg or R:CreateTexture(bgName, "MEDIUM")
-    R.bg:ClearAllPoints()
-    R.bg:SetAllPoints(R)
-    R.bg:SetTexture("Interface\\Icons\\spell_warlock_demonwrath")
-    R.bg:SetVertexColor(1, 1, 1, 0)
-    R.bg:Show()
-    
-    R.bgAnimGroup = R.bgAnimGroup or R.bg:CreateAnimationGroup(bgName.."AnimGroup")
-    R.bgAnim = R.bgAnim or R.bgAnimGroup:CreateAnimation("Alpha", bgName.."Anim")
-    R.bgAnim:SetFromAlpha(1)
-    R.bgAnim:SetToAlpha(0)
-    R.bgAnim:SetDuration(0.25)
-    R.bgAnim:SetSmoothing("IN")
-end
+local flashName = "DemonwrathTargetsFlash"
+R.flash = R.flash or R:CreateTexture(flashName, "MEDIUM")
+R.flash:ClearAllPoints()
+R.flash:SetAllPoints(R)
+R.flash:SetTexture("Interface\\Icons\\spell_warlock_demonwrath")
+R.flash:SetVertexColor(1, 1, 1, 0)
+R.flash:Show()
+R.flashAG = R.flashAG or R.flash:CreateAnimationGroup(flashName.."AG")
+R.flashAnim = R.flashAnim or R.flashAG:CreateAnimation("Alpha", flashName.."Anim")
+R.flashAnim:SetFromAlpha(1)
+R.flashAnim:SetToAlpha(0)
+R.flashAnim:SetSmoothing("IN")
 
-local function onCombatEvent(_, subEvent, _, sourceGUID, sourceName, sourceFlags, _,
-    destGUID, destName, destFlags, _, spellID, spellName, _, ...)
-    
-    if sourceGUID == playerGUID and subEvent == "SPELL_DAMAGE" and spellID == 193439 then
+function A.onCombatEvent(_, subEvent, _, sourceGUID, sourceName, sourceFlags, _, destGUID, destName, destFlags, _, ...)
+    if subEvent == "SPELL_DAMAGE" and sourceGUID == playerGUID and ... == 193439 then
         if state == "ready" then
             state = "collect"
-            counter = 0
-            lastTransition = now
-            R.bgAnim:SetDuration(0.5 / (1 + .01 * GetHaste()))
-            R.bgAnimGroup:Play()
-        end
-        if state == "collect" then
+            counter = 1
+            lastTransition = GetTime()
+            R.flashAnim:SetDuration(0.5 / (1 + .01 * GetHaste()))
+            R.flashAG:Play()
+        elseif state == "collect" then
             counter = counter + 1
         end
     end
 end
 
-local function onRefresh()
+function A.statusTrigger()
+    local now = GetTime()
     if state == "collect" then
         if now - lastTransition > 0.20 then
             state = "ready"
@@ -70,26 +46,9 @@ local function onRefresh()
     elseif state == "ready" then
         customText = (now - lastTransition < 2.0) and tostring(counter) or ""
     end
+    return (customText ~= "")
 end
 
-local function doCustomText()
-    now = GetTime()
-    if now - lastRefresh >= refreshInterval then
-        onRefresh()
-        lastRefresh = now
-    end
+function A.doCustomText()
     return customText
 end
-A.doCustomText = doCustomText
-
-local triggerDispatch = {
-    ["COMBAT_LOG_EVENT_UNFILTERED"] = onCombatEvent,
-}
-local function doTrigger(event, ...)
-    now = GetTime()
-    triggerDispatch[event](...)
-    return shouldShow
-end
-A.doTrigger = doTrigger
-
-initGUI()
