@@ -6,6 +6,8 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Roaring Blaze](weakauras/roaring-blaze) | 0.1 | 2016-11-15 | Release
+[ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.0-beta | 2016-11-15 | Beta
 [Demonwrath Targets](weakauras/demonwrath-targets) | 1.1 | 2016-11-10 | Release
 [Sephuz's Secret](weakauras/sephuzs-secret) | 1.0 | 2016-10-15 | Release
 [Touch of Karma](weakauras/touch-of-karma) | 1.0 | 2016-10-15 | Release
@@ -18,7 +20,6 @@ WeakAura | Ver | Last update | Dev status
 [Absorb Total](weakauras/absorb-total) | 1.0 | 2016-09-02 | Release
 [Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
 [Loot Spec](weakauras/loot-spec) | 0.0 | 2016-08-23 | Release
-[Roaring Blaze](weakauras/roaring-blaze) | 0.0 | 2016-08-23 | Release
 [Exact Mobcount](archived/exact-mobcount) | 0.0 | 2016-08-10 | Archived
 [Gigantic Anger](weakauras/gigantic-anger) | 0.0 | 2016-08-10 | Release
 [Loot Method](weakauras/loot-method) | 0.0 | 2016-08-10 | Release

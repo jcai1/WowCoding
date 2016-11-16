@@ -12,6 +12,23 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        ToV/02GUA/Volatile Foam Closest
+      source dir:  weakauras/volatile-foam-closest
+      dev status:  Beta
+      description: |-
+        When you are affected by Guarm's Volatile Foam, plays a sound and
+        shows who is closest to you and what color debuff they have.
+        (The sound can easily be changed or disabled.)
+
+        If it cannot distinguish who is closest to you, it shows a list of
+        candidates.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0-beta"
+          date: 2016-11-15
+          info: Initial beta release.
+    -
       name:        Sephuz's Secret
       source dir:  weakauras/sephuzs-secret
       dev status:  Release
@@ -191,6 +208,11 @@ weakauras:
       classes:      [Warlock (Destruction)]
       requested by: [Arc]
       versions:
+        - id:   "0.1"
+          date: 2016-11-15
+          info: |-
+            Add multipliers for higher stacks of RB. Cosmetic changes
+            (added an icon).
         - id:   "0.0"
           date: 2016-08-23
           info: Initial release.

@@ -18,7 +18,16 @@ local playerGUID      = UnitGUID("player")
 
 ----- Main logic -----
 local rbCounts = {}
-local rbMults = {[0] = "1.00", [1] = "1.25", [2] = "1.56", [3] = "1.95"}
+local rbMults = {
+    [0] = "1.00",
+    [1] = "1.25",
+    [2] = "1.56",
+    [3] = "1.95",
+    [4] = "2.44",
+    [5] = "3.05",
+    [6] = "3.81",
+    [7] = "4.77",
+}
 
 local function onCombatEvent(_, subEvent, _, sourceGUID, sourceName, sourceFlags, _,
     destGUID, destName, destFlags, _, spellID, spellName, _, ...)
