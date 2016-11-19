@@ -21,7 +21,7 @@ and a non-tank has aggro or top threat. You can adjust options under
 
 #### v1.0 (2016-11-18):
 
-Updated some details including sounds.
+Unarchived. Updated some details including sounds.
 
 
 #### v0.0 (2016-01-12):
