@@ -6,8 +6,9 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Target Threat Situation](weakauras/target-threat-situation) | 1.0 | 2016-11-18 | Release
+[ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.1 | 2016-11-16 | Release
 [Roaring Blaze](weakauras/roaring-blaze) | 0.1 | 2016-11-15 | Release
-[ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.0-beta | 2016-11-15 | Beta
 [Demonwrath Targets](weakauras/demonwrath-targets) | 1.1 | 2016-11-10 | Release
 [Sephuz's Secret](weakauras/sephuzs-secret) | 1.0 | 2016-10-15 | Release
 [Touch of Karma](weakauras/touch-of-karma) | 1.0 | 2016-10-15 | Release
@@ -36,6 +37,5 @@ WeakAura | Ver | Last update | Dev status
 [Mana Potency](archived/mana-potency) | 0.0 | 2016-03-04 | Archived
 [Temporal Power](weakauras/temporal-power) | 0.1 | 2016-03-04 | Release
 [Item Deleter](weakauras/item-deleter) | 0.0 | 2016-02-16 | Release
-[Target Threat Situation](archived/target-threat-situation) | 0.0 | 2016-01-12 | Archived
 [Arcane Blast Bar](archived/arcane-blast-bar) | 0.0 | 2016-01-02 | Archived
 [Raid Interrupts](archived/raid-interrupts) | 0.0 | 2015-11-18 | Archived

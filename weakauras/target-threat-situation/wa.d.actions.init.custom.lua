@@ -1,12 +1,7 @@
--- I have provided the following options to adjust the behavior of the WeakAura.
+---- BEGIN OPTIONS ----
 
----------- BEGIN OPTIONS ----------
-
--- How frequently to refresh the display. Higher numbers use more CPU, up to refreshing on every frame.
-local fps = 15
-
--- The sound to use for the audio alert. Code for PlaySoundKitID (look up the sound on Wowhead and click Link)
-local alertSound = 17852
+-- The sound to use for the audio alert.
+local alertSound = "Sound\\SPELLS\\SPELL_DR_Artifact_MoonSpells_ImpactLight_02.ogg"
 
 -- Mutes the audio alert if you are not using a tank spec.
 local muteIfNotTanking = true
@@ -17,6 +12,15 @@ local disableIfNotTanking = false
 -- Disables the text display (but not the audio alert) regardsless of your role.
 local disableTextDisplay = false
 
+-- How often to scan the raid for general player info.
+local raidRefreshInterval = 0.5
+
+-- How often to scan the raid for threat.
+local refreshInterval = 0.1
+
+-- How often to play the alert sound (if enabled).
+local audioInterval = 2
+
 -- The role icons on the text display.
 local roleIconNone = "Interface\\Icons\\inv_misc_questionmark"
 local roleIconTank = "Interface\\Icons\\spell_holy_devotionaura"
@@ -26,64 +30,16 @@ local roleIconDamager = "Interface\\Icons\\ability_warrior_punishingblow"
 -- List of NPCs for which to hide the threat table and disable the audio alert
 -- You can include either the NPC name or the NPC id
 local npcBlacklist = {
-    -- BEGIN Hellfire Citadel
-    90485, -- Felfire Artillery
-    90410, -- Felfire Crusher
-    91103, -- Felfire Demolisher (1)
-    94733, -- (2)
-    90432, -- Felfire Flamebelcher (1)
-    94873, -- (2)
-    93435, -- Felfire Transporter
-    94322, -- Burning Firebomb
-    94312, -- Quick-Fuse Firebomb
-    94326, -- Reactive Firebomb
-    94955, -- Reinforced Firebomb
-    93717, -- Volatile Firebomb
-    91368, -- Crushing Hand
-    93838, -- Grasping Hand
-    93839, -- Dragging Hand
-    93369, -- Salivating Bloodthirster (1)
-    90521, -- (2)
-    92038, -- (3)
-    90477, -- Blood Globule
-    90513, -- Fel Blood Globule
-    93288, -- Corrupted Soul
-    90508, -- Gorebound Construct
-    90568, -- Gorebound Essence
-    90387, -- Shadowy Construct
-    91765, -- Crystalline Fel Prison
-    91938, -- Haunting Soul
-    94397, -- Unstable Voidfiend
-    94231, -- Wild Pyromaniac
-    91270, -- Dread Infernal
-    91259, -- Fel Imp
-    91305, -- Fel Iron Summoner
-    92208, -- Doomfire Spirit
-    92740, -- Hellfire Deathcaller
-    96119, -- Source of Chaos
-    95775, -- Void Star
-    93297, -- Living Shadow
-    -- END Hellfire Citadel
 }
 -- List of NPCs for which to disable the audio alert only
 local npcAudioBlacklist = {
-    -- BEGIN Hellfire Citadel
-    93616, -- Dreadstalker
-    94412, -- Infernal Doombringer
-    -- END Hellfire Citadel
 }
 
----------- END OPTIONS ----------
+---- END OPTIONS ----
 
-local A, t = aura_env, GetTime()
-local ssub, sformat, slen = string.sub, string.format, string.len
-local tinsert, tconcat, tsort = table.insert, table.concat, table.sort
-
-A.display = ""
-A.t1 = 0
-A.dt1 = 1 / fps
-A.t2 = 0
-A.dt2 = 0.5
+local A = aura_env
+local customText = ""
+local audioOn = false
 
 local function makeTextureString(icon)
     -- The preceding space is necessary or the alignment gets fucked
@@ -120,7 +76,7 @@ end
 
 -- Key: unit GUID
 -- Value: table with the following keys:
---     If not isPet: unit, name, class, role (all guaranteed); pet (optional)
+--     If not isPet: unit, name, role (all guaranteed); class, pet (optional)
 --     If isPet: unit, owner, ownerRole, family (all guaranteed)
 local players = {}
 
@@ -140,15 +96,6 @@ local unitDB = {
 }
 for i = 1, 40 do unitDB.raid[i] = "raid" .. i end
 
-local function printError(msg)
-    print(A.id .. " error: " .. msg)
-end
-
-local function fatalError(msg)
-    print(A.id .. " fatal error: " .. msg)
-    A.aborted = true
-end
-
 local function resetThreatTbl(threatTbl)
     for i = 1, 4 do
         threatTbl[i].player = nil
@@ -162,7 +109,7 @@ local function cmpThreat(a, b)
 end
 
 local function sortThreatTbl(threatTbl)
-    tsort(threatTbl, cmpThreat)
+    sort(threatTbl, cmpThreat)
 end
 
 local function getUnitList()
@@ -180,7 +127,6 @@ local function getPlayerSpecRole()
     return playerSpec and select(6, GetSpecializationInfo(playerSpec)) or "NONE"
 end
 
--- Raid status refresh run every 0.5 seconds
 local function refreshRaid()
     local playerSpecRole = getPlayerSpecRole()
     if playerSpecRole ~= "TANK" then
@@ -194,14 +140,14 @@ local function refreshRaid()
     for i = 1, #unitList do
         local u = unitList[i]
         local upet = u .. "pet"
-        local guid, name, class, role
+        local _, guid, name, class, role
         if UnitExists(u) then
             guid = UnitGUID(u)
             name = UnitName(u)
-            class = select(2, UnitClass(u))
+            _, class = UnitClass(u)
             role = UnitGroupRolesAssigned(u)
         end
-        if guid and name and class and role then
+        if guid and name and role then
             players[guid] = players[guid] or {}
             local p = players[guid]
             p.unit = u
@@ -230,32 +176,31 @@ local function refreshRaid()
         end
     end
 end
-A.refreshRaid = refreshRaid
 
 local function guidToNpcId(guid)
     if not guid then
         return
     end
-    local n = slen(guid)
-    if ssub(guid, 1, 8) ~= "Creature" then
+    local n = strlen(guid)
+    if strsub(guid, 1, 8) ~= "Creature" then
         return
     end
     local lastHyphen, penultHyphen
     for i = n, 1, -1 do
-        if ssub(guid, i, i) == "-" then
+        if strsub(guid, i, i) == "-" then
             lastHyphen = i
             break
         end
     end
     if lastHyphen then
         for i = (lastHyphen - 1), 1, -1 do
-            if ssub(guid, i, i) == "-" then
+            if strsub(guid, i, i) == "-" then
                 penultHyphen = i
                 break
             end
         end
         if penultHyphen then
-            return tonumber(ssub(guid, penultHyphen + 1, lastHyphen - 1))
+            return tonumber(strsub(guid, penultHyphen + 1, lastHyphen - 1))
         end
     end
 end
@@ -270,7 +215,8 @@ local function playerToString(p)
     if p.isPet then
         return playerToString(players[p.owner]) .. "'s " .. p.family
     else
-        return "|c" .. RAID_CLASS_COLORS[p.class].colorStr .. p.name .. "|r"
+        local classColorCode = p.class and RAID_CLASS_COLORS[p.class].colorStr or "ff888888"
+        return "|c" .. classColorCode .. p.name .. "|r"
     end
 end
 
@@ -288,11 +234,12 @@ local healerOrDamagerTest = {
 }
 
 local usedPlayers = {}
-local function refreshDisplay()
-    A.display = ""
+local function refresh()
+    customText = ""
+    audioOn = false
     
     if WeakAuras.IsOptionsOpen() then
-        A.display = "Target Threat Situation"
+        customText = "Target Threat Situation"
         return
     end
     
@@ -389,27 +336,23 @@ local function refreshDisplay()
     local tt1Role = tt1Player and getRoleOrOwnerRole(tt1Player)
     local tt3Role = tt3Player and getRoleOrOwnerRole(tt3Player)
     
-    local playAlertSound = false
     -- Alert visually if primary target isn't a tank (or tank's pet)
     -- Alert aurally if primary target is specifically a player with healer/DPS role (minimize annoyance / false positives)
     if tt1Player and (tt1Role ~= "TANK") then
         tt[1].alert = true
         if healerOrDamagerTest[tt1Role] and not tt1Player.isPet then
-            playAlertSound = true
+            audioOn = true
         end
-    -- Alert visually if top non-tank's threat > the top tank's threat
-    -- Alert aurally if top non-tank is specifically a player with healer/DPS role
+        -- Alert visually if top non-tank's threat > the top tank's threat
+        -- Alert aurally if top non-tank is specifically a player with healer/DPS role
     elseif tt3Player and (tt[3].threat > tt[2].threat) then
         tt[3].alert = true
         if healerOrDamagerTest[tt3Role] and not tt3Player.isPet then
-            playAlertSound = true
+            audioOn = true
         end
     end
     if playerSpecRole ~= "TANK" and muteIfNotTanking then
-        playAlertSound = false
-    end
-    if playAlertSound then
-        PlaySoundKitID(alertSound, MASTER)
+        audioOn = false
     end
     
     if not disableTextDisplay then
@@ -425,15 +368,39 @@ local function refreshDisplay()
             if p and not usedPlayers[p] then
                 usedPlayers[p] = true
                 local role = getRoleOrOwnerRole(p)
-                local threatPctStr = tankThreat > 0 and sformat("%3.f%%%%", 100 * x.threat / tankThreat) or "Inf%%"
+                local threatPctStr = tankThreat > 0 and format("%3.f%%%%", 100 * x.threat / tankThreat) or "Inf%%"
                 threatPctStr = (p == primaryTarget) and (">" .. threatPctStr .. "<") or (" " .. threatPctStr .. " ")
                 lines[#lines + 1] =
-                    colorIfTruthy(threatPctStr, x.alert, "ff0000")
-                    .. roleIconStrings[role]
-                    .. playerToString(p)
+                colorIfTruthy(threatPctStr, x.alert, "ff0000")
+                .. roleIconStrings[role]
+                .. playerToString(p)
             end
         end
-        A.display = tconcat(lines, "\n")
+        customText = table.concat(lines, "\n")
     end
 end
-A.refreshDisplay = refreshDisplay
+
+local lastRaidRefresh = 0
+local lastRefresh = 0
+local lastAudio = 0
+
+function A.statusTrigger()
+    local now = GetTime()
+    if now - lastRaidRefresh > raidRefreshInterval then
+        lastRaidRefresh = now
+        refreshRaid()
+    end
+    if now - lastRefresh > refreshInterval then
+        lastRefresh = now
+        refresh()
+    end
+    if audioOn and now - lastAudio > audioInterval then
+        lastAudio = now
+        PlaySoundFile(alertSound, MASTER)
+    end
+    return customText ~= ""
+end
+
+function A.customTextFunc()
+    return customText
+end

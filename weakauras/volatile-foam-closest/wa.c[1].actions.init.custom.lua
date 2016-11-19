@@ -9,7 +9,7 @@ local FRC = {} -- Friendly Range Check
 local noneColorCode = "ffffff"
 local unsafeColorCode = "ff2222"
 local maxSafeNearbyShown = 2
-local maxUnsafeNarbyShown = 2
+local maxUnsafeNearbyShown = 2
 
 local refreshInterval = 0.15
 local lastRefresh = 0
@@ -19,26 +19,31 @@ local function colorize(colorCode, str)
     return format("|cff%s%s|r", colorCode, str)
 end
 
-local function refresh(yourColor)
-    local youLine = colorize(yourColor.code, format("%s on YOU!", yourColor.color))
+local function checkColor(unit)
+    for _, c in ipairs(guarmColors) do
+        if UnitDebuff(unit, c.debuff) then
+            return c
+        end
+    end
+end
+
+local function refresh(foamColor)
+    local youLine = colorize(foamColor.code, format("%s on YOU!", foamColor.color))
+    local youColor = checkColor("player")
+    if (not youColor) or (foamColor == youColor) then
+        return youLine.."\n".."Foam color matches!"
+    end
     
     local safeNearby, unsafeNearby = {}, {}
     local extraSafeNearby, extraUnsafeNearby = 0, 0
     
     local closestUnits, closestRange = FRC:GetClosestInGroup()
     for i, unit in ipairs(closestUnits) do
-        local theirColor
-        for _, c in ipairs(guarmColors) do
-            if UnitDebuff(unit, c.debuff) then
-                theirColor = c
-                break
-            end
-        end
-        
+        local theirColor  = checkColor(unit)
         local colorCode = theirColor and theirColor.code or noneColorCode
         local str = colorize(colorCode, tostring(UnitName(unit)))
         
-        if theirColor == yourColor or not theirColor then
+        if theirColor == foamColor or not theirColor then
             if #safeNearby < maxSafeNearbyShown then
                 tinsert(safeNearby, str)
             else
@@ -54,9 +59,9 @@ local function refresh(yourColor)
     end
     
     safeNearby = table.concat(safeNearby, " ")
-    safeNearby = colorize(yourColor.code,  "Safe: ")..safeNearby
+    safeNearby = colorize(foamColor.code,  "Safe: ")..safeNearby
     if extraSafeNearby > 0 then
-        safeNearby = safeNearby..colorize(yourColor.code, " +"..extraSafeNearby)
+        safeNearby = safeNearby..colorize(foamColor.code, " +"..extraSafeNearby)
     end
     
     if #unsafeNearby == 0 and extraUnsafeNearby == 0 then
@@ -74,19 +79,19 @@ local function refresh(yourColor)
 end
 
 function A.statusTrigger()
-    local yourColor
+    local foamColor
     for _, c in ipairs(guarmColors) do
         if UnitDebuff("player", c.foam) then
-            yourColor = c
+            foamColor = c
             break
         end
     end
     
     local now = GetTime()
-    if yourColor then
+    if foamColor then
         if now - lastRefresh > refreshInterval then
             lastRefresh = now
-            refresh(yourColor)
+            refresh(foamColor)
         end
         return true
     else

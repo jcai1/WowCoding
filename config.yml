@@ -14,7 +14,7 @@ weakauras:
     -
       name:        ToV/02GUA/Volatile Foam Closest
       source dir:  weakauras/volatile-foam-closest
-      dev status:  Beta
+      dev status:  Release
       description: |-
         When you are affected by Guarm's Volatile Foam, plays a sound and
         shows who is closest to you and what color debuff they have.
@@ -25,6 +25,11 @@ weakauras:
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2016-11-16
+          info: |-
+            Initial release. Fixed a typo, and now detects when your 
+            foam color matches your debuff color.
         - id:   "1.0-beta"
           date: 2016-11-15
           info: Initial beta release.
@@ -513,8 +518,8 @@ weakauras:
           info: Initial release.
     -
       name:        Target Threat Situation
-      source dir:  archived/target-threat-situation
-      dev status:  Archived
+      source dir:  weakauras/target-threat-situation
+      dev status:  Release
       description: |-
         Shows a subset of your target's threat table in a text display
         (including the primary target, the top threat tank, the top threat
@@ -524,6 +529,9 @@ weakauras:
       classes:      [All]
       requested by: [Kildon]
       versions:
+        - id:   "1.0"
+          date: 2016-11-18
+          info: Unarchived. Updated some details including sounds.
         - id:   "0.0"
           date: 2016-01-12
           info: Initial release.
