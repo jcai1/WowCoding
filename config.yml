@@ -12,6 +12,23 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        ToV/03HEL/Taint Assign
+      source dir:  weakauras/tov-03hel-taint-assign
+      dev status:  Release
+      description: |-
+        Assign dispellers to `Taint of the Sea` and show your assignment.
+      classes:      [All]
+      requested by: [Vim]
+      versions:
+        - id:   "1.1-beta"
+          date: 2016-12-07
+          info: |-
+            Fix healer dispel detection, show "Dispel Anyone" if not assigned,
+            show target's raid marker, play sound while someone needs dispel.
+        - id:   "1.0-beta"
+          date: 2016-12-01
+          info: Initial beta release.
+    -
       name:        ToV/02GUA/Volatile Foam Closest
       source dir:  weakauras/volatile-foam-closest
       dev status:  Release

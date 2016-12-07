@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[ToV/03HEL/Taint Assign](weakauras/tov-03hel-taint-assign) | 1.1-beta | 2016-12-07 | Release
 [Target Threat Situation](weakauras/target-threat-situation) | 1.0 | 2016-11-18 | Release
 [ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.1 | 2016-11-16 | Release
 [Roaring Blaze](weakauras/roaring-blaze) | 0.1 | 2016-11-15 | Release
