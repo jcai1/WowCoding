@@ -740,6 +740,12 @@ function R.hooks.R_SetPoint(...)
     end
 end
 
+function R.hooks.R_SetParent(...)
+	if R.allowMove then
+		R.originals.R_SetParent(...)
+	end
+end
+
 local function hookStub(name)
     return function(...)
         local f = R.hooks[name]
@@ -754,6 +760,7 @@ if not R.hooked then
     R.originals = {
         R_ClearAllPoints = R.ClearAllPoints,
         R_SetPoint = R.SetPoint,
+        R_SetParent = R.SetParent
     }
     CharacterStatsPane:HookScript("OnShow", hookStub("CharacterStatsPane_OnShow"))
     CharacterStatsPane:HookScript("OnHide", hookStub("CharacterStatsPane_OnHide"))
@@ -761,6 +768,7 @@ if not R.hooked then
     R:HookScript("OnHide", hookStub("R_OnHide"))
     R.ClearAllPoints = hookStub("R_ClearAllPoints")
     R.SetPoint = hookStub("R_SetPoint")
+    R.SetParent = hookStub("R_SetParent")
     R.hooked = true
     
     R.hooks.R_OnShow()

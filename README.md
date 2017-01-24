@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release
 [ToV/03HEL/Taint Assign](weakauras/tov-03hel-taint-assign) | 1.1-beta | 2016-12-07 | Release
 [Target Threat Situation](weakauras/target-threat-situation) | 1.0 | 2016-11-18 | Release
 [ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.1 | 2016-11-16 | Release
@@ -17,7 +18,6 @@ WeakAura | Ver | Last update | Dev status
 [EN/05DRA/Mark of the Nightmare](weakauras/mark-of-the-nightmare) | 1.0-beta | 2016-09-28 | Beta
 [Artifact Power Total](weakauras/artifact-power-total) | 1.0 | 2016-09-20 | Release
 [Fireball Crit Chance](weakauras/fireball-crit-chance) | 1.0 | 2016-09-14 | Release
-[Legion Stats Pane](weakauras/legion-stats-pane) | 0.4 | 2016-09-14 | Release
 [Prevent Popup Decline](weakauras/prevent-popup-decline) | 1.1 | 2016-09-06 | Release
 [Absorb Total](weakauras/absorb-total) | 1.0 | 2016-09-02 | Release
 [Demo Pet Tracker](weakauras/demo-pet-tracker) | 1.2 | 2016-08-23 | Release
