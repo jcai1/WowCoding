@@ -12,6 +12,18 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Meme Sound IMPROVED 3
+      source dir:  weakauras/meme-sound
+      dev status:  Release
+      description: |-
+        Play meme sounds.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.3"
+          date: 2017-01-24
+          info: Initial release.
+    -
       name:        Latency
       source dir:  weakauras/latency
       dev status:  Release

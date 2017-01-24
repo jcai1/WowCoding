@@ -8,6 +8,7 @@ WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
 [Latency](weakauras/latency) | 1.0 | 2017-01-24 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release
+[Meme Sound IMPROVED 3](weakauras/meme-sound) | 1.3 | 2017-01-24 | Release
 [ToV/03HEL/Taint Assign](weakauras/tov-03hel-taint-assign) | 1.1-beta | 2016-12-07 | Release
 [Target Threat Situation](weakauras/target-threat-situation) | 1.0 | 2016-11-18 | Release
 [ToV/02GUA/Volatile Foam Closest](weakauras/volatile-foam-closest) | 1.1 | 2016-11-16 | Release
