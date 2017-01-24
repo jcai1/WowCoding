@@ -1,0 +1,23 @@
+## Latency
+
+Shows your home and world latency.
+
+![Screenshot](./screenshot.png?raw=true)
+
+**Dev status**: Release
+
+**Classes**: All
+
+**Requested by**: Arc
+
+### Import String for v1.0 (2017-01-24)
+
+    di0(eaGie1LKQQrHsofImlqLBrvAxuv)cLQmmOCmQILHq9mPQmnPkzBsf03KkW5KkI5jvu3tc(NuPCqkrluQs9qPs1gri(OufnsuQCsPkSsOAMQa7KsYprinuPsAPGspLktvI(kOQERur6UsfQ9c5Vucdw5WsAXsL4XumzuCzHndYNvHgTe60QYQrPQETkOzRQUnLA3a)gvdhuLLJ0ZLY0fDDvA7GIVtj14vrNhbRxQqMpkL9tg5bvICmOsKRAYhh0qLi3d8sujYzUTKBJCFUP(1SuRGw9sRweaye(NBQFny1kOb)OEOLxAT5tJJpoO1Pw6)y6yFAC8Xbcx4W6BUTKBxgNPwbnYKfUW)Ct9RbDbM8XbAg(NtpOMbWqG1jjHRPPP9G0a8u7ullgaHRPPPPPPPrJ8sbAK7w3ilCnnnT43IhK2PwN18GHPLfdGW10000000OrEPanio1UMSiZMbccddccdRFg2OKHt7KKMxVA)O10YIvGMhmmn7MwbTJ0iacxtttl(T4bPDQ1zT(WW0YIbq4AAAAAAAA0iVuGgeNAxtwKzZabbbbbHH1pdBuYWPDssZRxnpyyE7ddtZUPvqJq8)CRfUMMMw8BHW10000000OrEPanio1UMSiZMbccccdddRFg2OKHt7KKMxVA2CAOLfRaT(WW0SBAf0ObJW1000caJWdaJWf(NBQFnOlWKpoqJgq0OvKfjHRPPP95M6xRlvaJ1pMSypaWP1LkGX6htwKO3eoTFndGHa742bCA)Agadb4ZPFgTcA9msRI0L1SXIKW1000G13CBj3UmotTcAg(NtpOMbWqG1VMbWqGDC7GKVpzn2tJSVVH)50dQzamey9RzameGpN(zij8aWiCHdDbM8XbAw6BUTKBxgNjrUadlscxtttJg5Lc0G13CBj3UmotHhagHlCy9ZN5WGQvqdw)8zomOACQw3TO8zhuFRcRlFMddkR(WGtJgq0OvKeYXWTWCBj3g1BuIsKZCBj3UmotKd6cm5JdyrsJg5Lc0QxA1IaaJV52sUDzCMe5cmSiPfagKJjAgKZsQrdgp(yAeJ5Pd8I5XlX9c5yEn2)cm5dMa5Q)pYX8AW7xjugNjY1Vb5G4Ge5icTcm8xJOGa5G4G096OazvNGCpgK7GAgadbKdCTlPVJhdAdzLhKJghFCqjb4fixgNjY1Ipux5pqICLeTRW2JEYUsKlPVJhdkQe5cycqICDNdyE5JdAixsaEbY1YAEBi3feWeGe5Q3KJC3wyr9BDLqlP3a1BuIsKZg5yqUgYrSpX(e73HihmiR80lI9Gseca
+     
+
+### Changes
+
+#### v1.0 (2017-01-24):
+
+Initial release.
+

@@ -12,6 +12,20 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Latency
+      source dir:  weakauras/latency
+      dev status:  Release
+      description: |-
+        Shows your home and world latency.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-01-24
+          info: Initial release.
+    -
       name:        ToV/03HEL/Taint Assign
       source dir:  weakauras/tov-03hel-taint-assign
       dev status:  Release
