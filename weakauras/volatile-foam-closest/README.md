@@ -7,6 +7,10 @@ shows who is closest to you and what color debuff they have.
 If it cannot distinguish who is closest to you, it shows a list of
 candidates.
 
+NOTE: This hasn't really been tested and I wouldn't recommend using it.
+Making this was mostly a learning experience / template for new
+"assignment" type WeakAuras.
+
 **Dev status**: Release
 
 **Classes**: All
