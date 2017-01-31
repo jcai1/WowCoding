@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Meme Sound Filter](weakauras/meme-sound-filter) | 1.0 | 2017-01-31 | Release
 [Latency](weakauras/latency) | 1.0 | 2017-01-24 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release
 [Meme Sound IMPROVED 3](weakauras/meme-sound) | 1.3 | 2017-01-24 | Release

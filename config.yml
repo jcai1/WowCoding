@@ -12,6 +12,27 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Meme Sound Filter
+      source dir:  weakauras/meme-sound-filter
+      dev status:  Release
+      description: |-
+        For those that hate seeing meme sound spam. Filters out chat messages
+        containing the phrase `meme sound` or `stop memes`.
+
+        This is completely separate from the Meme Sound weakaura. If you also
+        have the Meme Sound weakaura, you will still hear the sounds.
+
+        If you want to see the meme sounds that got filtered out, run the macro
+        (or paste into your chat box):
+
+            /run WeakAuras.regions["Meme Sound Filter"].region.showMemes()
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-01-31
+          info: Initial release.
+    -
       name:        Meme Sound IMPROVED 3
       source dir:  weakauras/meme-sound
       dev status:  Release
