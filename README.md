@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Friendly Nameplate Clickthrough](weakauras/friendly-nameplate-clickthrough) | 1.0 | 2017-02-01 | Release
 [Meme Sound Filter](weakauras/meme-sound-filter) | 1.0 | 2017-01-31 | Release
 [Latency](weakauras/latency) | 1.0 | 2017-01-24 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release

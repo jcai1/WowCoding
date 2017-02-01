@@ -12,6 +12,18 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Friendly Nameplate Clickthrough
+      source dir:  weakauras/friendly-nameplate-clickthrough
+      dev status:  Release
+      description: |-
+        Sets it so that you can click through friendly nameplates.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-02-01
+          info: Initial release.
+    -
       name:        Meme Sound Filter
       source dir:  weakauras/meme-sound-filter
       dev status:  Release
