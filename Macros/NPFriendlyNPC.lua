@@ -1,1 +1,0 @@
-/run local u,s,a,x=UIErrorsFrame,"nameplateShowFriendlyNPCs"a=u.AddMessage if InCombatLockdown()then a(u,"Cannot toggle in combat")else x=GetCVar(s)SetCVar(s,1-x)a(u,"Friendly NPC nameplates are now "..(x=="0"and"SHOWN"or"HIDDEN"))end

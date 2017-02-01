@@ -1,1 +1,0 @@
-/run local c,u,s,a,x=C_NamePlate,UIErrorsFrame,"etNamePlateFriendlyClickThrough"a=u.AddMessage if InCombatLockdown()then a(u,"Cannot toggle in combat")else x=c["G"..s]()c["S"..s](not x)a(u,"You now CAN"..(x and""or"NOT").." click friendly nameplates")end
