@@ -12,6 +12,19 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Objective Tracker Autocollapse
+      source dir:  weakauras/objective-tracker-autocollapse
+      dev status:  Release
+      description: |-
+        Automatically collapses the objective tracker upon entering
+        boss combat.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-02-01
+          info: Initial release.
+    -
       name:        Friendly Nameplate Clickthrough
       source dir:  weakauras/friendly-nameplate-clickthrough
       dev status:  Release
