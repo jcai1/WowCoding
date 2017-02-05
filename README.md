@@ -6,8 +6,9 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Nightstalker Rupture](weakauras/nightstalker-rupture) | 1.0 | 2017-02-04 | Release
+[Objective Tracker Autocollapse](weakauras/objective-tracker-autocollapse) | 1.1 | 2017-02-04 | Release
 [Friendly Nameplate Clickthrough](weakauras/friendly-nameplate-clickthrough) | 1.0 | 2017-02-01 | Release
-[Objective Tracker Autocollapse](weakauras/objective-tracker-autocollapse) | 1.0 | 2017-02-01 | Release
 [Meme Sound Filter](weakauras/meme-sound-filter) | 1.0 | 2017-01-31 | Release
 [Latency](weakauras/latency) | 1.0 | 2017-01-24 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release

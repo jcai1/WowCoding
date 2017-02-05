@@ -12,15 +12,33 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Nightstalker Rupture
+      source dir:  weakauras/nightstalker-rupture
+      dev status:  Release
+      description: |-
+        Shows whether your Rupture on the target is affected by
+        the Nightstalker talent.
+      classes:      [Rogue (Assassination)]
+      requested by: [Zavinn]
+      versions:
+        - id:   "1.0"
+          date: 2017-02-04
+          info: Initial release.
+    -
       name:        Objective Tracker Autocollapse
       source dir:  weakauras/objective-tracker-autocollapse
       dev status:  Release
       description: |-
         Automatically collapses the objective tracker upon entering
-        boss combat.
+        boss combat in a raid instance.
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2017-02-04
+          info: |-
+            Set it to load only in raid instances, thus avoiding
+            hiding Mythic+ timers.
         - id:   "1.0"
           date: 2017-02-01
           info: Initial release.
