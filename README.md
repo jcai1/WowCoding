@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Subterfuge Garrote](weakauras/subterfuge-garrote) | 1.0 | 2017-02-11 | Release
 [Nightstalker Rupture](weakauras/nightstalker-rupture) | 1.0 | 2017-02-04 | Release
 [Objective Tracker Autocollapse](weakauras/objective-tracker-autocollapse) | 1.1 | 2017-02-04 | Release
 [Friendly Nameplate Clickthrough](weakauras/friendly-nameplate-clickthrough) | 1.0 | 2017-02-01 | Release

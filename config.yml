@@ -12,6 +12,19 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Subterfuge Garrote
+      source dir:  weakauras/subterfuge-garrote
+      dev status:  Release
+      description: |-
+        Shows whether your Garrote on the target is affected by
+        the Subterfuge talent.
+      classes:      [Rogue (Assassination)]
+      requested by: [Zavinn]
+      versions:
+        - id:   "1.0"
+          date: 2017-02-11
+          info: Initial release.
+    -
       name:        Nightstalker Rupture
       source dir:  weakauras/nightstalker-rupture
       dev status:  Release
