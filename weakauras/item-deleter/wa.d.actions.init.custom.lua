@@ -28,6 +28,9 @@ for i = 1, #itemList do
 end
 
 local function matchesAnyNamePattern(name)
+    if not name then
+        return false
+    end
     for i = 1, #namePatterns do
         if strmatch(name, namePatterns[i]) then
             return true
