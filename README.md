@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Item Deleter](weakauras/item-deleter) | 1.0 | 2017-02-18 | Release
 [Subterfuge Garrote](weakauras/subterfuge-garrote) | 1.0 | 2017-02-11 | Release
 [Nightstalker Rupture](weakauras/nightstalker-rupture) | 1.0 | 2017-02-04 | Release
 [Objective Tracker Autocollapse](weakauras/objective-tracker-autocollapse) | 1.1 | 2017-02-04 | Release
@@ -44,6 +45,5 @@ WeakAura | Ver | Last update | Dev status
 [Archi Backstab P3](archived/archi-backstab-p3) | 0.2 | 2016-03-04 | Archived
 [Mana Potency](archived/mana-potency) | 0.0 | 2016-03-04 | Archived
 [Temporal Power](weakauras/temporal-power) | 0.1 | 2016-03-04 | Release
-[Item Deleter](weakauras/item-deleter) | 0.0 | 2016-02-16 | Release
 [Arcane Blast Bar](archived/arcane-blast-bar) | 0.0 | 2016-01-02 | Archived
 [Raid Interrupts](archived/raid-interrupts) | 0.0 | 2015-11-18 | Archived
