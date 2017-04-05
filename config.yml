@@ -12,6 +12,20 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Artifact Power
+      source dir:  weakauras/artifact-power
+      dev status:  Release
+      description: |-
+        A simple Artifact Power bar replacement.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-04-05
+          info: Initial release.
+    -
       name:        Subterfuge Garrote
       source dir:  weakauras/subterfuge-garrote
       dev status:  Release

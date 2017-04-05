@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Artifact Power](weakauras/artifact-power) | 1.0 | 2017-04-05 | Release
 [Item Deleter](weakauras/item-deleter) | 1.0 | 2017-02-18 | Release
 [Subterfuge Garrote](weakauras/subterfuge-garrote) | 1.0 | 2017-02-11 | Release
 [Nightstalker Rupture](weakauras/nightstalker-rupture) | 1.0 | 2017-02-04 | Release
