@@ -12,6 +12,18 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        The RNG Index
+      source dir:  weakauras/the-rng-index
+      dev status:  Release
+      description: |-
+        Whisper yourself "rng" to get memed.
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-04-06
+          info: Initial release.
+    -
       name:        Artifact Power
       source dir:  weakauras/artifact-power
       dev status:  Release
