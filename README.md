@@ -6,7 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
-[The RNG Index](weakauras/the-rng-index) | 1.0 | 2017-04-06 | Release
+[The RNG Index](weakauras/the-rng-index) | 1.1 | 2017-04-15 | Release
 [Artifact Power](weakauras/artifact-power) | 1.0 | 2017-04-05 | Release
 [Item Deleter](weakauras/item-deleter) | 1.0 | 2017-02-18 | Release
 [Subterfuge Garrote](weakauras/subterfuge-garrote) | 1.0 | 2017-02-11 | Release

@@ -32,7 +32,7 @@ end
 local artifactPowers = C_ArtifactUI.GetPowers()
 if artifactPowers then
     for _, powerID in ipairs(artifactPowers) do
-        local spellID = C_ArtifactUI.GetPowerInfo(powerID)
+        local spellID = C_ArtifactUI.GetPowerInfo(powerID).spellID
         addSpellID(spellID)
     end
 else

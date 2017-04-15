@@ -1,5 +1,11 @@
 MySaved.Instances = MySaved.Instances or {}
 local allTextures = {}
+local ManifestInterfaceData = MySaved.ManifestInterfaceData
+
+if not ManifestInterfaceData then
+	ManifestInterfaceData = {}
+	print("Warning: MySaved.ManifestInterfaceData not found; cannot convert from texture ids to paths")
+end
 
 local function printf(...)
 	return print(format(...))
@@ -58,9 +64,7 @@ local function parseHeader(header)
 		local texture = abilityIcon:GetTexture()
 		if texture then
 			if type(texture) ~= "string" then
-				assert(type(texture) == "number")
-				printf("Note: Texture of %s is %d",
-					tostring(title and title:GetText()), texture)
+				texture = ManifestInterfaceData[texture] or texture
 			end
 			abilityIconText = tostring(texture)
 			if strlower(strsub(abilityIconText, 1, 16)) == "interface\\icons\\" then
@@ -232,9 +236,17 @@ local function processInstance()
 		end
 	end
 
-	MySaved.Instances[instanceName] = table.concat(lines, "\n")
-	MySaved.Textures = allTextures
-	printf("Saved %d bosses for %s", bossIndex, instanceName)
+	local result = {}
+	result.description = table.concat(lines, "\n")
+	result.textures = {}
+	for texture, _ in pairs(allTextures) do
+		local webTexture = gsub(texture, " ", "-")
+		local suffix = (texture == webTexture) and "" or format(" -O\"%s.jpg\"", texture)
+		local command = format("wget http://wow.zamimg.com/images/wow/icons/small/%s.jpg%s", webTexture, suffix)
+		tinsert(result.textures, command)
+	end
+	MySaved.Instances[instanceName] = result
+	printf("Saved %d bosses for %s", bossIndex - 1, instanceName)
 end
 
 processInstance()

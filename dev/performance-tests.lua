@@ -53,8 +53,29 @@
 /run local z={3,1,4,1,5,9,2,6,5,3}; local t=debugprofilestop(); for i=1,1000000 do local a,b,c,d,e,f,g,h,i,j=unpack(z) end; print(debugprofilestop()-t)
 -- 0.134 us | unpack a 10-element array 
 
-/run local a,b,c,d="JhhBVJPxjoZY9p9h3ovl","ykoFHuxSQR5JudpW2trk" c=a..b d=a..b local t=debugprofilestop() for i=1,1000000 do local _=(c==d) end; print(debugprofilestop()-t)
--- 0.016 us | compare two equal 40-chararacter strings
+/run local a,b,c,d="JhhBVJPxjoZY9p9h3ovl","ykoFHuxSQR5JudpW2trk" c=a..b d=a..b local t=debugprofilestop() for i=1,200000 do local _=c==d _=c==d _=c==d _=c==d _=c==d end; print(debugprofilestop()-t)
+-- 0.012 us | compare two equal 40-chararacter strings
 
-/run local t=debugprofilestop() for i=1,1000000 do GetTime() end; print(debugprofilestop()-t)
--- 0.033 us | call GetTime()
+/run local a,b="bR2IdCIJ7XnkbZ81PiwcNGYYwjlIlr234qiqHXN9","fCn4PQpf0xcbMa3vDvwlOCq2BCKITGZdIDXpr0R5" local t=debugprofilestop() for i=1,1000000 do local _=a.."\n"..b end; print(debugprofilestop()-t)
+-- 0.085 us | concatenate two 40-chararacter strings with delimiter, using .. operator
+
+/run local a,b,format="bR2IdCIJ7XnkbZ81PiwcNGYYwjlIlr234qiqHXN9","fCn4PQpf0xcbMa3vDvwlOCq2BCKITGZdIDXpr0R5",format local t=debugprofilestop() for i=1,1000000 do local _=format("%s\n%s",a,b)end; print(debugprofilestop()-t)
+-- 0.987 us | concatenate two 40-chararacter strings with delimiter, using format
+
+/run local a,tconcat={"bR2IdCIJ7XnkbZ81PiwcNGYYwjlIlr234qiqHXN9","fCn4PQpf0xcbMa3vDvwlOCq2BCKITGZdIDXpr0R5"},table.concat local t=debugprofilestop() for i=1,1000000 do local _=tconcat(a)end; print(debugprofilestop()-t)
+-- 0.158 us | concatenate two 40-chararacter strings with delimiter, using table.concat
+
+/run local GetTime,t=GetTime,debugprofilestop() for i=1,200000 do local _=GetTime() _=GetTime() _=GetTime() _=GetTime() _=GetTime() end; print(debugprofilestop()-t)
+-- 0.041 us | call GetTime()
+
+/run local tostring,x=tostring,nil local t=debugprofilestop() for i=1,200000 do local _=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x) end; print(debugprofilestop()-t)
+-- 0.069 us | call tostring() on a nil value
+
+/run local tostring,x=tostring,true local t=debugprofilestop() for i=1,200000 do local _=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x) end; print(debugprofilestop()-t)
+-- 0.077 us | call tostring() on a boolean value
+
+/run local tostring,x=tostring,"asdfjkl111" local t=debugprofilestop() for i=1,200000 do local _=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x) end; print(debugprofilestop()-t)
+-- 0.095 us | call tostring() on a string value
+
+/run local tostring,x=tostring,-7531.1357 local t=debugprofilestop() for i=1,200000 do local _=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x)_=tostring(x) end; print(debugprofilestop()-t)
+-- 0.535 us | call tostring() on a numeric value

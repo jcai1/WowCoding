@@ -20,6 +20,9 @@ weakauras:
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2017-04-15
+          info: Fix for 7.2.
         - id:   "1.0"
           date: 2017-04-06
           info: Initial release.
