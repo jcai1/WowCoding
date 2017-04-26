@@ -354,7 +354,7 @@ weakauras:
       requested by: [Arc]
       versions:
         - id:   "1.0"
-          date: 2016-04-26
+          date: 2017-04-26
           info: Changed to just display the spec icon.
         - id:   "0.0"
           date: 2016-08-23

@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Loot Spec](weakauras/loot-spec) | 1.0 | 2017-04-26 | Release
 [The RNG Index](weakauras/the-rng-index) | 1.1 | 2017-04-15 | Release
 [Artifact Power](weakauras/artifact-power) | 1.0 | 2017-04-05 | Release
 [Item Deleter](weakauras/item-deleter) | 1.0 | 2017-02-18 | Release
@@ -39,7 +40,6 @@ WeakAura | Ver | Last update | Dev status
 [Magic Buff](weakauras/magic-buff) | 0.0 | 2016-07-26 | Release
 [Pet Follow State](weakauras/pet-follow-state) | 0.0 | 2016-07-26 | Release
 [L.Ring Dmg (Self)](weakauras/legendary-ring-damage) | 0.7 | 2016-07-20 | Release
-[Loot Spec](weakauras/loot-spec) | 1.0 | 2016-04-26 | Release
 [L.Ring CD (Self)](weakauras/legendary-ring-cd) | 0.1 | 2016-04-09 | Release
 [Zavinn xd](weakauras/zavinn-xd) | 0.1 | 2016-04-09 | Release
 [Furious Sun Counter](weakauras/furious-sun-counter) | 0.1 | 2016-03-26 | Release
