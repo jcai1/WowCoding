@@ -242,7 +242,7 @@ local function processInstance()
 	for texture, _ in pairs(allTextures) do
 		local webTexture = gsub(texture, " ", "-")
 		local suffix = (texture == webTexture) and "" or format(" -O\"%s.jpg\"", texture)
-		local command = format("wget http://wow.zamimg.com/images/wow/icons/small/%s.jpg%s", webTexture, suffix)
+		local command = format("wget -nc http://wow.zamimg.com/images/wow/icons/small/%s.jpg%s", webTexture, suffix)
 		tinsert(result.textures, command)
 	end
 	MySaved.Instances[instanceName] = result
