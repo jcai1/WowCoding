@@ -12,6 +12,23 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Legionfall Building Buff
+      source dir:  weakauras/legionfall-building-buff
+      dev status:  Release
+      description: |-
+        Informs you when a Legionfall building (Mage Tower, Command Center, 
+        Nether Disruptor) is up and you don't have the buff from it.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0-beta"
+          date: 2017-05-23
+          info: |-
+            Initial release. It is in beta because it has not been
+            tested to work with all of the Legionfall buildings.
+    -
       name:        The RNG Index
       source dir:  weakauras/the-rng-index
       dev status:  Release

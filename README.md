@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Legionfall Building Buff](weakauras/legionfall-building-buff) | 1.0-beta | 2017-05-23 | Release
 [Loot Spec](weakauras/loot-spec) | 1.0 | 2017-04-26 | Release
 [The RNG Index](weakauras/the-rng-index) | 1.1 | 2017-04-15 | Release
 [Artifact Power](weakauras/artifact-power) | 1.0 | 2017-04-05 | Release
