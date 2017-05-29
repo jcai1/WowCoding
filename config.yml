@@ -12,6 +12,21 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        Broken Shore Rares
+      source dir:  weakauras/broken-shore-rares
+      dev status:  Release
+      description: |-
+        Shows you which Broken Shore rares you have killed today.
+        Only loads on the Broken Shore.
+
+        ![Screenshot](./screenshot.png?raw=true)
+      classes:      [All]
+      requested by: [Arc]
+      versions:
+        - id:   "1.0"
+          date: 2017-05-28
+          info: Initial release.
+    -
       name:        Legionfall Building Buff
       source dir:  weakauras/legionfall-building-buff
       dev status:  Release
