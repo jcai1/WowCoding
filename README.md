@@ -6,11 +6,12 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Artifact Power](weakauras/artifact-power) | 1.1 | 2017-07-08 | Release
+[Legion Stats Pane](weakauras/legion-stats-pane) | 0.6 | 2017-07-08 | Release
 [Broken Shore Rares](weakauras/broken-shore-rares) | 1.0 | 2017-05-28 | Release
 [Legionfall Building Buff](weakauras/legionfall-building-buff) | 1.0-beta | 2017-05-23 | Release
 [Loot Spec](weakauras/loot-spec) | 1.0 | 2017-04-26 | Release
 [The RNG Index](weakauras/the-rng-index) | 1.1 | 2017-04-15 | Release
-[Artifact Power](weakauras/artifact-power) | 1.0 | 2017-04-05 | Release
 [Item Deleter](weakauras/item-deleter) | 1.0 | 2017-02-18 | Release
 [Subterfuge Garrote](weakauras/subterfuge-garrote) | 1.0 | 2017-02-11 | Release
 [Nightstalker Rupture](weakauras/nightstalker-rupture) | 1.0 | 2017-02-04 | Release
@@ -18,7 +19,6 @@ WeakAura | Ver | Last update | Dev status
 [Friendly Nameplate Clickthrough](weakauras/friendly-nameplate-clickthrough) | 1.0 | 2017-02-01 | Release
 [Meme Sound Filter](weakauras/meme-sound-filter) | 1.0 | 2017-01-31 | Release
 [Latency](weakauras/latency) | 1.0 | 2017-01-24 | Release
-[Legion Stats Pane](weakauras/legion-stats-pane) | 0.5 | 2017-01-24 | Release
 [Meme Sound IMPROVED 3](weakauras/meme-sound) | 1.3 | 2017-01-24 | Release
 [ToV/03HEL/Taint Assign](weakauras/tov-03hel-taint-assign) | 1.1-beta | 2016-12-07 | Release
 [Target Threat Situation](weakauras/target-threat-situation) | 1.0 | 2016-11-18 | Release

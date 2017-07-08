@@ -41,8 +41,9 @@ weakauras:
         - id:   "1.0-beta"
           date: 2017-05-23
           info: |-
-            Initial release. It is in beta because it has not been
-            tested to work with all of the Legionfall buildings.
+            Initial release. It was in beta because it had not been
+            tested to work with all of the Legionfall buildings, but I
+            can confirm it works by now.
     -
       name:        The RNG Index
       source dir:  weakauras/the-rng-index
@@ -69,6 +70,10 @@ weakauras:
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "1.1"
+          date: 2017-07-08
+          info: |-
+            Fixed the double % sign issue introduced by a WeakAuras update.
         - id:   "1.0"
           date: 2017-04-05
           info: Initial release.
@@ -515,6 +520,10 @@ weakauras:
       classes:      [All]
       requested by: [Arc]
       versions:
+        - id:   "0.6"
+          date: 2017-07-08
+          info: |-
+            Fixed the double % sign issue introduced by a WeakAuras update.
         - id:   "0.5"
           date: 2017-01-24
           info: |-

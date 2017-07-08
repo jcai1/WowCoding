@@ -65,7 +65,7 @@ local function calcCustomText()
     local fraction = xp / nextRankCost
     local bonusString = (pointsAvailable <= 0) and "" or format(", |cff00ff00%d available|r", pointsAvailable)
     
-    return format("[AP: %s / %s (|cff%s%.1f%%%%|r), next in %s%s]",
+    return format("[AP: %s / %s (|cff%s%.1f%%|r), next in %s%s]",
         intToString3(xp), intToString3(nextRankCost),
         progressFractionToColor(fraction), fraction * 100,
         intToString3(nextRankCost - xp), bonusString)

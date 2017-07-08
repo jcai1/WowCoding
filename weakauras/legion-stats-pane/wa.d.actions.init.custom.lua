@@ -85,7 +85,7 @@ end
 -- (1) use GetCombatRating and GetCombatRatingBonus directly
 -- (2) have values expressed in percentages
 function formatRatingStat(value, rating)
-    return format("%.2f%%%% (%s / +%.2f%%%%)",
+    return format("%.2f%% (%s / +%.2f%%)",
         value,
         BreakUpLargeNumbers(GetCombatRating(rating)),
         GetCombatRatingBonus(rating))
@@ -139,7 +139,7 @@ local function addPower(lines, unit)
     
     local _, class = UnitClass(unit)
     if class == "DRUID"
-    or (class == "MONK" and GetSpecialization == SPEC_MONK_MISTWEAVER) then
+    or (class == "MONK" and GetSpecialization() == SPEC_MONK_MISTWEAVER) then
         if powerToken ~= "MANA" then
             local mana = UnitPowerMax(unit, SPELL_POWER_MANA);
             mana = BreakUpLargeNumbers(mana);
@@ -191,7 +191,7 @@ local function addMovementSpeed(lines, unit)
     end
     
     -- We'll put the actual Speed stat in the Tertiary section
-    addFStat(lines, "Speed", "%.f%%%% (Run %.f%%%% Fly %.f%%%% Swim %.f%%%%)",
+    addFStat(lines, "Speed", "%.f%% (Run %.f%% Fly %.f%% Swim %.f%%)",
     speed, runSpeed, flightSpeed, swimSpeed)
 end
 
@@ -235,7 +235,7 @@ local function addCrit(lines, unit)
     
     if GetCritChanceProvidesParryEffect() then
         local critRating = GetCombatRating(rating);
-        addFStat(lines, "Crit", "%.2f%%%% (%s / +%.2f%%%%) (Parry +%.2f%%%%)",
+        addFStat(lines, "Crit", "%.2f%% (%s / +%.2f%%) (Parry +%.2f%%)",
             critChance,
             BreakUpLargeNumbers(critRating),
             GetCombatRatingBonus(rating),
@@ -259,7 +259,7 @@ local function addMastery(lines, unit)
     local mastery, bonusCoeff = GetMasteryEffect();
     local masteryRating = GetCombatRating(CR_MASTERY);
     local masteryBonus = GetCombatRatingBonus(CR_MASTERY) * bonusCoeff;
-    addFStat(lines, "Mastery", "%.2f%%%% (%s / +%.2f%%%%)",
+    addFStat(lines, "Mastery", "%.2f%% (%s / +%.2f%%)",
         mastery,
         BreakUpLargeNumbers(masteryRating),
     masteryBonus)
@@ -276,7 +276,7 @@ local function addVersatility(lines, unit)
     GetCombatRatingBonus(CR_VERSATILITY_DAMAGE_TAKEN)
     + GetVersatilityBonus(CR_VERSATILITY_DAMAGE_TAKEN);
     
-    addFStat(lines, "Versatility", "%.2f%%%% (%s) (Taken -%.2f%%%%)",
+    addFStat(lines, "Versatility", "%.2f%% (%s) (Taken -%.2f%%)",
         versatilityDamageBonus,
         BreakUpLargeNumbers(versatility),
     versatilityDamageTakenReduction)
@@ -357,9 +357,9 @@ local function addAttackDamage(lines, unit)
             damageTooltip = damageTooltip..colorNeg.." "..physicalBonusNeg.."|r";
         end
         if ( percent > 1 ) then
-            damageTooltip = damageTooltip..colorPos.." x"..floor(percent*100+0.5).."%%|r";
+            damageTooltip = damageTooltip..colorPos.." x"..floor(percent*100+0.5).."%|r";
         elseif ( percent < 1 ) then
-            damageTooltip = damageTooltip..colorNeg.." x"..floor(percent*100+0.5).."%%|r";
+            damageTooltip = damageTooltip..colorNeg.." x"..floor(percent*100+0.5).."%|r";
         end
     end
     
@@ -381,9 +381,9 @@ local function addAttackDamage(lines, unit)
             offhandDamageTooltip = offhandDamageTooltip..colorNeg.." "..physicalBonusNeg.."|r";
         end
         if ( percent > 1 ) then
-            offhandDamageTooltip = offhandDamageTooltip..colorPos.." x"..floor(percent*100+0.5).."%%|r";
+            offhandDamageTooltip = offhandDamageTooltip..colorPos.." x"..floor(percent*100+0.5).."%|r";
         elseif ( percent < 1 ) then
-            offhandDamageTooltip = offhandDamageTooltip..colorNeg.." x"..floor(percent*100+0.5).."%%|r";
+            offhandDamageTooltip = offhandDamageTooltip..colorNeg.." x"..floor(percent*100+0.5).."%|r";
         end
         
         addStat(lines, "OH Damage", offhandDamageTooltip)
@@ -442,12 +442,12 @@ local function addAttackSpeed(lines, unit)
     local meleeHaste = GetMeleeHaste();
     local speed, offhandSpeed = UnitAttackSpeed(unit);
     if offhandSpeed then
-        addFStat(lines, "Attack Speed", "%s / %s (Haste +%s%%%%)",
+        addFStat(lines, "Attack Speed", "%s / %s (Haste +%s%%)",
             BreakUpLargeNumbers(speed),
             BreakUpLargeNumbers(offhandSpeed),
             BreakUpLargeNumbers(meleeHaste))
     else
-        addFStat(lines, "Attack Speed", "%s (Haste +%s%%%%)",
+        addFStat(lines, "Attack Speed", "%s (Haste +%s%%)",
             BreakUpLargeNumbers(speed),
             BreakUpLargeNumbers(meleeHaste))
     end
@@ -524,7 +524,7 @@ local function addArmor(lines, unit)
     
     local baseString = ""
     if baseArmorReduction ~= armorReduction then
-        baseString = format(" (Base %.2f%%%%)", baseArmorReduction)
+        baseString = format(" (Base %.2f%%)", baseArmorReduction)
     end
     local petString = ""
     if unit == "player" then
@@ -533,7 +533,7 @@ local function addArmor(lines, unit)
             petString = format(" (Pet +%s)", BreakUpLargeNumbers(floor(petBonus)))
         end
     end
-    addFStat(lines, "Armor", "%s / %.2f%%%%%s%s",
+    addFStat(lines, "Armor", "%s / %.2f%%%s%s",
         BreakUpLargeNumbers(effectiveArmor),
         armorReduction,
         baseString,
@@ -555,7 +555,7 @@ end
 -- Block
 local function addBlock(lines, unit)
     if unit ~= "player" then return end
-    local text = format("%s (Stops %d%%%%)",
+    local text = format("%s (Stops %d%%)",
         formatRatingStat(GetBlockChance(), CR_BLOCK),
         GetShieldBlock())
     addStat(lines, "Block", text)
