@@ -12,6 +12,19 @@ weakauras:
   verbose sync:     false
   auras:
     -
+      name:        "Finality: Nightblade"
+      source dir:  weakauras/finality-nightblade
+      dev status:  Release
+      description: |-
+        Shows your Nightblade on the target, glows if it is affected
+        by Finality: Nightblade.
+      classes:      [All]
+      requested by: [Zavinn]
+      versions:
+        - id:   "1.0"
+          date: 2017-07-29
+          info: Initial release.
+    -
       name:        Broken Shore Rares
       source dir:  weakauras/broken-shore-rares
       dev status:  Release

@@ -6,6 +6,7 @@ Lua scripts for World of Warcraft.
 
 WeakAura | Ver | Last update | Dev status
 -------- | --- | ----------- | ----------
+[Finality: Nightblade](weakauras/finality-nightblade) | 1.0 | 2017-07-29 | Release
 [Artifact Power](weakauras/artifact-power) | 1.1 | 2017-07-08 | Release
 [Legion Stats Pane](weakauras/legion-stats-pane) | 0.6 | 2017-07-08 | Release
 [Broken Shore Rares](weakauras/broken-shore-rares) | 1.0 | 2017-05-28 | Release
